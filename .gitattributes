@@ -1,0 +1,8 @@
+/mvnw text eol=lf
+*.cmd text eol=crlf
+
+# Preserve benchmark evidence and historical snapshots byte-for-byte.
+/perf/results/** -text whitespace=cr-at-eol
+/docs/baselines/** -text whitespace=cr-at-eol
+/docs/stage1-report.md -text whitespace=cr-at-eol
+/docs/stage1-source.md -text whitespace=-blank-at-eol,cr-at-eol

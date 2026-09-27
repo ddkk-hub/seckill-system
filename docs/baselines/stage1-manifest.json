@@ -1,0 +1,58 @@
+{
+  "snapshot": "docs/baselines/stage1-source.zip",
+  "snapshot_note": "Current stage1 source snapshot; datasource password replaced with environment reference. Not a historical Git commit.",
+  "sha256": {
+    "docs/baselines/stage1-source.zip": "b2a6ae97960285618b8e8e0500c74b0fe3f4a2720e6efea8c521a2d1e7aa3ba3",
+    "docs/stage1-report.md": "aea16df041effe4a3bcbac7569859d98e92401d7b78d9d6355ac42afcf70397d",
+    "docs/stage1-source.md": "da0e52a6d88fdf4038220b102214e160cba63d60d34169c93538e816cbbada1b",
+    "perf/results/20260926-215046/application.log": "4b9ed77f303b393d3f8ef0f07b56b2190a27a5b8ea0c9944374830db2ee0a61f",
+    "perf/results/20260926-215046/correctness-jmeter.log": "2519aad605257f21708626f3fbbcc04a229757fd8de1edabf9fdbfda4b6b839a",
+    "perf/results/20260926-215046/correctness.jtl": "01c607ffdc0998b40d20d3fb9075a64b3f40929f6d152dfa411e6649bb14e142",
+    "perf/results/20260926-215046/correctness.log": "9af6e26454ca27397f161ba4fa4388f3f0181643ca05c5cbb9d2809db2a39f9d",
+    "perf/results/20260926-215046/metrics.json": "3f1a887f43753c1f8b20e2824a219729b7c069fb61b3dbf2a8259876885405d1",
+    "perf/results/20260926-215046/users-1-jmeter.log": "60210211815b6115f4a134b08f9bfd1ca930e5e5cec8226bc161c24bdec9ee1f",
+    "perf/results/20260926-215046/users-1.jtl": "4098ec899da1387c731de8adc0f1a48391a4c48e8120db62f2a8e716b0fd8200",
+    "perf/results/20260926-215046/users-1.log": "cd4924eb82986dace1fb3b67beafbce8f900f2fc938641ab8118f1bc4c8b61f8",
+    "perf/results/20260926-215046/users-10-jmeter.log": "b995a51a13b16824af8668e786646b26567bbb4b560e9437767ee927df19535c",
+    "perf/results/20260926-215046/users-10.jtl": "3f14e31ef9f2309bf11b40abd212c8e2e2d84ecb6aea6b77404938a26bfab78a",
+    "perf/results/20260926-215046/users-10.log": "97d730d6f8d9323650ba7dc378c3528ce6dad988b3fd0e53a8f87ecf7ca79e63",
+    "perf/results/20260926-215046/users-100-jmeter.log": "ef441ffcccac505c48eed5ccf935c5abae37648b486e6e7432e63a0baab5a9bc",
+    "perf/results/20260926-215046/users-100.jtl": "a357bfafd73c80e6c3f885808f379c73057f4ea44c0450c78ff112e5beaad6e3",
+    "perf/results/20260926-215046/users-100.log": "7ffd638e80162df5ac7e4d572a306a1ba39e9675ee465b7c0f073da2bce7efda",
+    "perf/results/20260926-215046/warmup-jmeter.log": "f48686b27c904b80ad3c8e99f9e967290e557a1102a7f6a8f4d52126cca1ae2e",
+    "perf/results/20260926-215046/warmup.jtl": "f51991a1b4fed4eb9aece58c21daee369bf341e18459c42b2edde26bd679f58f",
+    "perf/results/20260926-215046/warmup.log": "11617fb7c68e8574a738f32faad759e5562b845940c0abca7b0035763bf4fc8c"
+  },
+  "jtl_checks": [
+    {
+      "scenario": "warmup",
+      "requests": 200,
+      "orders": 200,
+      "stock_verified": true
+    },
+    {
+      "scenario": "correctness",
+      "requests": 1000,
+      "orders": 100,
+      "stock_verified": true
+    },
+    {
+      "scenario": "users-1",
+      "requests": 10000,
+      "orders": 10000,
+      "stock_verified": true
+    },
+    {
+      "scenario": "users-10",
+      "requests": 10000,
+      "orders": 10000,
+      "stock_verified": true
+    },
+    {
+      "scenario": "users-100",
+      "requests": 10000,
+      "orders": 10000,
+      "stock_verified": true
+    }
+  ]
+}
