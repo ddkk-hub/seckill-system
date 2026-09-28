@@ -11,7 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
 @Service
-public class SeckillService {
+@org.springframework.boot.autoconfigure.condition.ConditionalOnProperty(name = "seckill.mode", havingValue = "mysql", matchIfMissing = true)
+public class SeckillService implements SeckillOperations {
     private final ProductMapper products;
     private final OrderMapper orders;
 

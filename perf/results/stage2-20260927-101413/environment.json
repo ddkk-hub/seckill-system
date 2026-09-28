@@ -1,0 +1,23 @@
+{
+  "time": "stage2-20260927-101413",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "logical_cpus": 32,
+  "memory_bytes": 16340414464,
+  "mysql_version": "8.0.46",
+  "redis_version": "8.0.5",
+  "requests_per_throughput_case": 10000,
+  "pool_size": 10,
+  "ramp_seconds": 1,
+  "mysql_tls": "REQUIRED",
+  "jar_sha256": "52fb2ada5f4f1c9c1572944843f6cb5a66e5660474f20723ed391aff5eb596d1",
+  "modes_order": [
+    "redis"
+  ],
+  "cases": [
+    "warmup",
+    "correctness",
+    "users-1"
+  ],
+  "repetitions": 1,
+  "notes": "Same machine; short exploratory samples; SQL and CPU sampling windows include process startup/teardown."
+}

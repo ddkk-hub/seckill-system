@@ -1,0 +1,29 @@
+阶段二与阶段一回归测试（2026-09-27）
+命令：SECKILL_MYSQL_TEST=true SECKILL_REDIS_TEST=true，mvnw package
+结果：20 项，失败 0、错误 0、跳过 0；BUILD SUCCESS
+
+-------------------------------------------------------------------------------
+Test set: com.ddk.seckill.RedisFailureTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.352 s -- in com.ddk.seckill.RedisFailureTest
+
+-------------------------------------------------------------------------------
+Test set: com.ddk.seckill.RedisSeckillIntegrationTest
+-------------------------------------------------------------------------------
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 9.070 s -- in com.ddk.seckill.RedisSeckillIntegrationTest
+
+-------------------------------------------------------------------------------
+Test set: com.ddk.seckill.SeckillMySqlTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.127 s -- in com.ddk.seckill.SeckillMySqlTest
+
+-------------------------------------------------------------------------------
+Test set: com.ddk.seckill.SeckillServiceTest
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.075 s -- in com.ddk.seckill.SeckillServiceTest
+
+-------------------------------------------------------------------------------
+Test set: com.example.demo.DemoApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.575 s -- in com.example.demo.DemoApplicationTests
+

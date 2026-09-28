@@ -1,8 +1,8 @@
 # seckill-system
 
-分阶段开发的 Java 秒杀系统。当前已完成阶段一：Spring Boot 3.3.5 + Java 21 + MyBatis + MySQL 8；阶段二 Redis + Lua 处于环境准备，尚未实现。
+分阶段开发的 Java 秒杀系统。当前已实现阶段一 MySQL、阶段二 Redis + Lua，以及阶段三 RabbitMQ 异步下单。阶段三使用 202 + requestId 受理，再查询最终订单；启动与验收请先看 [阶段三说明](docs/stage3.md)。
 
-## 本地启动
+## 阶段一历史启动方式（已迁移 Redis 的商品不要用此模式售卖）
 
 创建 MySQL 数据库 seckill 和商品表后，执行 `src/main/resources/db/stage1.sql` 创建订单表。现有开发数据库已完成此步骤。商品表要求 InnoDB、id 主键、name、stock、price 字段，具体说明见阶段一文档。
 
@@ -45,3 +45,26 @@ Remove-Item Env:SECKILL_MYSQL_TEST
 `perf/results/` 保存原始实测证据。`target/` 是可删除的构建和工具目录，不纳入 Git。历史源码快照中的数据库密码已移除。
 
 当前是教学阶段：尚无认证、请求幂等和限流；初始压测不是生产容量结论。
+
+## 阶段二启动（已迁移商品使用此模式）
+
+本机 Redis 与商品 1 的 98 件库存已准备好。新环境先执行 `src/main/resources/db/stage2.sql`，并按 [阶段二说明](docs/stage2.md) 停止商品写入后初始化库存。
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\start-redis.ps1
+.\mvnw.cmd spring-boot:run '-Dspring-boot.run.profiles=stage2'
+```
+
+默认不带 profile 的命令仍为 MySQL 模式，不得用于已迁移到 Redis 的同一商品。阶段二实时库存以 Redis 为准，MySQL product.stock 是导入基线。
+
+- [阶段二完整说明](docs/stage2.md)
+- [完整代码](docs/stage2-source.md)
+- [对比压测报告](docs/stage2-report.md)
+
+运行全部 20 项测试需同时设置 `SECKILL_MYSQL_TEST=true` 和 `SECKILL_REDIS_TEST=true`。源码密码仍在被 Git 忽略的本地配置里。
+
+## 阶段三（RabbitMQ 异步下单）
+
+运行与验收：[docs/stage3.md](docs/stage3.md)。完整代码：[docs/stage3-source.md](docs/stage3-source.md)。实测报告：[docs/stage3-report.md](docs/stage3-report.md)。
+
+启用 stage3 后下单返回 202 和 requestId，请查询 `/api/seckill/result/{requestId}` 确认最终订单。阶段一、二历史报告保留，不能把 202 直接当作成交成功。

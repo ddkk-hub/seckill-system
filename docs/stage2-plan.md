@@ -1,6 +1,6 @@
 # 阶段二设计与实施状态
 
-状态：设计及环境准备中，尚未完成阶段二。
+状态：阶段二环境、代码与 20 项测试完成；同条件对照压测及复测已归档。最终说明见 stage2.md，报告见 stage2-report.md。
 
 ## 1. 目标
 实时库存放入 Redis，例如 product_stock_1；Lua 原子检查并预扣。保留同步 MySQL 下单、订单查询，不引入 MQ。将库存竞争从 MySQL 热点行迁移到 Redis，售罄请求无需访问 MySQL。
@@ -21,10 +21,10 @@ MySQL product.stock 在 Redis 模式中是导入基线，不再每单更新；�
 
 新增：service 下的统一接口、Redis 库存 Service、Redis 下单 Service、显式初始化入口；entity 和 mapper 下的库存基线对象及 Mapper；resources 下 Lua 脚本、阶段二 SQL、独立配置；Redis 与 MySQL 集成测试；perf 下阶段二压测脚本及独立结果；docs 下完整代码、操作手册和对比报告。
 
-本文件是设计说明，不代表上述代码已经实现。
+本文件保留设计决策；实际文件清单、完整代码和验收步骤见 stage2.md。
 
 ## 4. 环境
-当前 Java 21、Boot 3.3.5、MySQL 8.0.46。已安装 WSL 2.7.14.0，内核 6.18.33.2-2。Windows DISM 日志显示 Reboot required=yes，未执行自动重启。wsl --list --verbose 确认尚无 Linux 分发，Ubuntu 和 Redis 尚未安装。需要用户保存工作并重启 Windows，之后继续安装 Ubuntu 和 Redis。业务代码尚未修改。完整步骤见 stage2-environment.md。
+当前 Java 21、Boot 3.3.5、MySQL 8.0.46；WSL 2.7.14.0、Ubuntu 和 Redis 8.0.5 已安装并验证 Windows 本机连接。重启要求已完成。Redis 使用 AOF everysec、noeviction、256mb 上限及回环监听。
 
 ## 5. 测试与压测计划
 功能：初始化、查询、购买、售罄、非法参数。

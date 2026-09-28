@@ -1,0 +1,360 @@
+2026-09-28 13:21:04,284 INFO o.a.j.u.JMeterUtils: Setting Locale to zh_CN
+2026-09-28 13:21:04,326 INFO o.a.j.JMeter: Loading user properties from: C:\seckill-system\target\tools\apache-jmeter-5.6.3\bin\user.properties
+2026-09-28 13:21:04,326 INFO o.a.j.JMeter: Loading system properties from: C:\seckill-system\target\tools\apache-jmeter-5.6.3\bin\system.properties
+2026-09-28 13:21:04,327 INFO o.a.j.JMeter: Setting JMeter property: users=100
+2026-09-28 13:21:04,327 INFO o.a.j.JMeter: Setting JMeter property: loops=10
+2026-09-28 13:21:04,327 INFO o.a.j.JMeter: Setting JMeter property: ramp=1
+2026-09-28 13:21:04,327 INFO o.a.j.JMeter: Setting JMeter property: product=80
+2026-09-28 13:21:04,327 INFO o.a.j.JMeter: Setting JMeter property: port=18084
+2026-09-28 13:21:04,337 INFO o.a.j.JMeter: Copyright (c) 1998-2024 The Apache Software Foundation
+2026-09-28 13:21:04,337 INFO o.a.j.JMeter: Version 5.6.3
+2026-09-28 13:21:04,337 INFO o.a.j.JMeter: java.version=21.0.12.1
+2026-09-28 13:21:04,337 INFO o.a.j.JMeter: java.vm.name=OpenJDK 64-Bit Server VM
+2026-09-28 13:21:04,337 INFO o.a.j.JMeter: os.name=Windows 11
+2026-09-28 13:21:04,337 INFO o.a.j.JMeter: os.arch=amd64
+2026-09-28 13:21:04,337 INFO o.a.j.JMeter: os.version=10.0
+2026-09-28 13:21:04,337 INFO o.a.j.JMeter: file.encoding=UTF-8
+2026-09-28 13:21:04,337 INFO o.a.j.JMeter: java.awt.headless=true
+2026-09-28 13:21:04,337 INFO o.a.j.JMeter: Max memory     =536870912
+2026-09-28 13:21:04,338 INFO o.a.j.JMeter: Available Processors =32
+2026-09-28 13:21:04,354 INFO o.a.j.JMeter: Default Locale=中文 (中国)
+2026-09-28 13:21:04,355 INFO o.a.j.JMeter: JMeter  Locale=中文 (中国)
+2026-09-28 13:21:04,355 INFO o.a.j.JMeter: JMeterHome=C:\seckill-system\target\tools\apache-jmeter-5.6.3
+2026-09-28 13:21:04,355 INFO o.a.j.JMeter: user.dir  =C:\seckill-system
+2026-09-28 13:21:04,356 INFO o.a.j.JMeter: PWD       =C:\seckill-system
+2026-09-28 13:21:04,375 INFO o.a.j.JMeter: IP: 172.26.111.135 Name: LAPTOP-77E72ENH FullName: windows10.microdone.cn
+2026-09-28 13:21:04,393 INFO o.a.j.s.FileServer: Default base='C:\seckill-system'
+2026-09-28 13:21:04,396 INFO o.a.j.s.FileServer: Set new base='C:\seckill-system\perf'
+2026-09-28 13:21:04,711 INFO o.a.j.s.SaveService: Testplan (JMX) version: 2.2. Testlog (JTL) version: 2.2
+2026-09-28 13:21:04,755 INFO o.a.j.s.SaveService: Using SaveService properties version 5.0
+2026-09-28 13:21:04,759 INFO o.a.j.s.SaveService: Using SaveService properties file encoding UTF-8
+2026-09-28 13:21:04,764 INFO o.a.j.s.SaveService: Loading file: perf\stage1.jmx
+2026-09-28 13:21:04,844 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/html is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2026-09-28 13:21:04,844 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xhtml+xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2026-09-28 13:21:04,845 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2026-09-28 13:21:04,845 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2026-09-28 13:21:04,845 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/vnd.wap.wml is org.apache.jmeter.protocol.http.parser.RegexpHTMLParser
+2026-09-28 13:21:04,845 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/css is org.apache.jmeter.protocol.http.parser.CssParser
+2026-09-28 13:21:04,863 INFO o.a.j.JMeter: Creating summariser <summary>
+2026-09-28 13:21:04,893 INFO o.a.j.e.StandardJMeterEngine: Running the test!
+2026-09-28 13:21:04,894 INFO o.a.j.s.SampleEvent: List of sample_variables: []
+2026-09-28 13:21:04,894 INFO o.a.j.s.SampleEvent: List of sample_variables: []
+2026-09-28 13:21:04,905 INFO o.a.j.e.u.CompoundVariable: Note: Function class names must contain the string: '.functions.'
+2026-09-28 13:21:04,905 INFO o.a.j.e.u.CompoundVariable: Note: Function class names must not contain the string: '.gui.'
+2026-09-28 13:21:05,012 INFO o.a.j.JMeter: 正在运行的测试 (1790572865012)
+2026-09-28 13:21:05,032 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 1 : Purchase
+2026-09-28 13:21:05,033 INFO o.a.j.e.StandardJMeterEngine: Starting 100 threads for group Purchase.
+2026-09-28 13:21:05,033 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
+2026-09-28 13:21:05,033 INFO o.a.j.t.ThreadGroup: Starting thread group... number=1 threads=100 ramp-up=1 delayedStart=false
+2026-09-28 13:21:05,044 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-1
+2026-09-28 13:21:05,050 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-2
+2026-09-28 13:21:05,059 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-3
+2026-09-28 13:21:05,069 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-4
+2026-09-28 13:21:05,076 INFO o.a.j.p.h.s.HTTPHCAbstractImpl: Local host = LAPTOP-77E72ENH
+2026-09-28 13:21:05,078 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-5
+2026-09-28 13:21:05,089 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-6
+2026-09-28 13:21:05,091 INFO o.a.j.t.ThreadGroup: Started thread group number 1
+2026-09-28 13:21:05,092 INFO o.a.j.e.StandardJMeterEngine: All thread groups have been started
+2026-09-28 13:21:05,099 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-7
+2026-09-28 13:21:05,100 INFO o.a.j.p.h.s.HTTPHC4Impl: HTTP request retry count = 0
+2026-09-28 13:21:05,102 INFO o.a.j.s.SampleResult: Note: Sample TimeStamps are START times
+2026-09-28 13:21:05,102 INFO o.a.j.s.SampleResult: sampleresult.default.encoding is set to UTF-8
+2026-09-28 13:21:05,103 INFO o.a.j.s.SampleResult: sampleresult.useNanoTime=true
+2026-09-28 13:21:05,103 INFO o.a.j.s.SampleResult: sampleresult.nanoThreadSleep=5000
+2026-09-28 13:21:05,106 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-8
+2026-09-28 13:21:05,117 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-9
+2026-09-28 13:21:05,125 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-10
+2026-09-28 13:21:05,135 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-11
+2026-09-28 13:21:05,145 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-12
+2026-09-28 13:21:05,155 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-13
+2026-09-28 13:21:05,166 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-14
+2026-09-28 13:21:05,175 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-15
+2026-09-28 13:21:05,185 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-16
+2026-09-28 13:21:05,194 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-17
+2026-09-28 13:21:05,205 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-18
+2026-09-28 13:21:05,215 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-19
+2026-09-28 13:21:05,226 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-20
+2026-09-28 13:21:05,235 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-21
+2026-09-28 13:21:05,245 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-22
+2026-09-28 13:21:05,256 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-23
+2026-09-28 13:21:05,265 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-24
+2026-09-28 13:21:05,275 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-25
+2026-09-28 13:21:05,285 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-26
+2026-09-28 13:21:05,295 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-27
+2026-09-28 13:21:05,305 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-28
+2026-09-28 13:21:05,315 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-29
+2026-09-28 13:21:05,325 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-30
+2026-09-28 13:21:05,335 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-31
+2026-09-28 13:21:05,346 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-32
+2026-09-28 13:21:05,356 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-33
+2026-09-28 13:21:05,365 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-34
+2026-09-28 13:21:05,377 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-35
+2026-09-28 13:21:05,385 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-36
+2026-09-28 13:21:05,394 INFO o.a.j.r.Summariser: summary +      1 in 00:00:00 =    2.7/s Avg:    26 Min:    26 Max:    26 Err:     0 (0.00%) Active: 36 Started: 36 Finished: 0
+2026-09-28 13:21:05,397 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-37
+2026-09-28 13:21:05,405 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-38
+2026-09-28 13:21:05,416 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-39
+2026-09-28 13:21:05,427 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-40
+2026-09-28 13:21:05,436 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-41
+2026-09-28 13:21:05,445 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-42
+2026-09-28 13:21:05,455 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-43
+2026-09-28 13:21:05,465 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-44
+2026-09-28 13:21:05,475 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-45
+2026-09-28 13:21:05,485 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-46
+2026-09-28 13:21:05,496 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-47
+2026-09-28 13:21:05,505 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-48
+2026-09-28 13:21:05,516 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-49
+2026-09-28 13:21:05,525 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-50
+2026-09-28 13:21:05,536 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-51
+2026-09-28 13:21:05,545 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-52
+2026-09-28 13:21:05,555 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-53
+2026-09-28 13:21:05,564 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-54
+2026-09-28 13:21:05,576 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-55
+2026-09-28 13:21:05,584 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-56
+2026-09-28 13:21:05,595 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-57
+2026-09-28 13:21:05,606 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-58
+2026-09-28 13:21:05,615 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-59
+2026-09-28 13:21:05,625 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-60
+2026-09-28 13:21:05,634 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-61
+2026-09-28 13:21:05,646 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-62
+2026-09-28 13:21:05,654 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-63
+2026-09-28 13:21:05,669 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-64
+2026-09-28 13:21:05,674 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-65
+2026-09-28 13:21:05,685 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-66
+2026-09-28 13:21:05,694 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-67
+2026-09-28 13:21:05,705 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-68
+2026-09-28 13:21:05,715 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-69
+2026-09-28 13:21:05,726 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-70
+2026-09-28 13:21:05,735 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-71
+2026-09-28 13:21:05,745 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-72
+2026-09-28 13:21:05,755 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-73
+2026-09-28 13:21:05,768 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-74
+2026-09-28 13:21:05,774 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-75
+2026-09-28 13:21:05,787 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-76
+2026-09-28 13:21:05,796 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-77
+2026-09-28 13:21:05,804 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-78
+2026-09-28 13:21:05,815 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-79
+2026-09-28 13:21:05,826 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-80
+2026-09-28 13:21:05,835 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-81
+2026-09-28 13:21:05,845 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-82
+2026-09-28 13:21:05,854 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-83
+2026-09-28 13:21:05,865 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-84
+2026-09-28 13:21:05,867 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-28
+2026-09-28 13:21:05,866 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-10
+2026-09-28 13:21:05,867 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-28
+2026-09-28 13:21:05,867 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-10
+2026-09-28 13:21:05,870 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-32
+2026-09-28 13:21:05,870 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-32
+2026-09-28 13:21:05,874 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-85
+2026-09-28 13:21:05,882 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-16
+2026-09-28 13:21:05,882 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-2
+2026-09-28 13:21:05,882 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-16
+2026-09-28 13:21:05,882 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-2
+2026-09-28 13:21:05,883 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-30
+2026-09-28 13:21:05,883 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-30
+2026-09-28 13:21:05,883 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-9
+2026-09-28 13:21:05,883 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-15
+2026-09-28 13:21:05,883 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-9
+2026-09-28 13:21:05,883 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-15
+2026-09-28 13:21:05,885 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-14
+2026-09-28 13:21:05,885 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-14
+2026-09-28 13:21:05,885 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-86
+2026-09-28 13:21:05,885 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-29
+2026-09-28 13:21:05,885 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-4
+2026-09-28 13:21:05,885 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-29
+2026-09-28 13:21:05,885 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-4
+2026-09-28 13:21:05,886 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-26
+2026-09-28 13:21:05,886 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-26
+2026-09-28 13:21:05,886 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-11
+2026-09-28 13:21:05,886 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-11
+2026-09-28 13:21:05,887 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-12
+2026-09-28 13:21:05,887 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-12
+2026-09-28 13:21:05,888 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-5
+2026-09-28 13:21:05,888 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-5
+2026-09-28 13:21:05,894 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-87
+2026-09-28 13:21:05,901 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-23
+2026-09-28 13:21:05,902 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-1
+2026-09-28 13:21:05,902 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-23
+2026-09-28 13:21:05,902 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-1
+2026-09-28 13:21:05,905 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-13
+2026-09-28 13:21:05,905 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-34
+2026-09-28 13:21:05,905 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-13
+2026-09-28 13:21:05,905 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-34
+2026-09-28 13:21:05,907 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-7
+2026-09-28 13:21:05,907 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-7
+2026-09-28 13:21:05,908 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-8
+2026-09-28 13:21:05,908 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-8
+2026-09-28 13:21:05,908 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-31
+2026-09-28 13:21:05,908 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-31
+2026-09-28 13:21:05,909 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-19
+2026-09-28 13:21:05,909 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-19
+2026-09-28 13:21:05,910 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-88
+2026-09-28 13:21:05,911 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-22
+2026-09-28 13:21:05,911 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-22
+2026-09-28 13:21:05,915 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-89
+2026-09-28 13:21:05,922 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-17
+2026-09-28 13:21:05,922 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-17
+2026-09-28 13:21:05,925 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-27
+2026-09-28 13:21:05,925 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-27
+2026-09-28 13:21:05,927 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-33
+2026-09-28 13:21:05,927 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-33
+2026-09-28 13:21:05,925 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-90
+2026-09-28 13:21:05,930 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-25
+2026-09-28 13:21:05,930 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-25
+2026-09-28 13:21:05,930 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-35
+2026-09-28 13:21:05,930 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-35
+2026-09-28 13:21:05,934 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-21
+2026-09-28 13:21:05,935 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-21
+2026-09-28 13:21:05,936 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-6
+2026-09-28 13:21:05,936 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-6
+2026-09-28 13:21:05,935 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-91
+2026-09-28 13:21:05,939 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-18
+2026-09-28 13:21:05,939 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-18
+2026-09-28 13:21:05,945 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-92
+2026-09-28 13:21:05,946 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-51
+2026-09-28 13:21:05,946 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-3
+2026-09-28 13:21:05,946 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-51
+2026-09-28 13:21:05,946 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-3
+2026-09-28 13:21:05,947 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-24
+2026-09-28 13:21:05,947 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-24
+2026-09-28 13:21:05,953 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-37
+2026-09-28 13:21:05,953 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-37
+2026-09-28 13:21:05,954 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-20
+2026-09-28 13:21:05,955 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-20
+2026-09-28 13:21:05,956 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-38
+2026-09-28 13:21:05,956 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-38
+2026-09-28 13:21:05,955 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-93
+2026-09-28 13:21:05,967 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-39
+2026-09-28 13:21:05,967 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-39
+2026-09-28 13:21:05,967 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-53
+2026-09-28 13:21:05,967 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-53
+2026-09-28 13:21:05,969 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-94
+2026-09-28 13:21:05,979 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-57
+2026-09-28 13:21:05,978 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-95
+2026-09-28 13:21:05,979 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-57
+2026-09-28 13:21:05,979 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-36
+2026-09-28 13:21:05,980 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-40
+2026-09-28 13:21:05,980 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-47
+2026-09-28 13:21:05,980 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-36
+2026-09-28 13:21:05,981 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-40
+2026-09-28 13:21:05,981 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-47
+2026-09-28 13:21:05,982 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-62
+2026-09-28 13:21:05,983 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-62
+2026-09-28 13:21:05,983 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-44
+2026-09-28 13:21:05,983 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-44
+2026-09-28 13:21:05,984 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-96
+2026-09-28 13:21:05,985 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-46
+2026-09-28 13:21:05,986 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-46
+2026-09-28 13:21:05,988 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-54
+2026-09-28 13:21:05,988 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-54
+2026-09-28 13:21:05,988 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-52
+2026-09-28 13:21:05,989 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-52
+2026-09-28 13:21:05,990 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-61
+2026-09-28 13:21:05,990 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-61
+2026-09-28 13:21:05,993 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-55
+2026-09-28 13:21:05,993 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-55
+2026-09-28 13:21:05,995 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-49
+2026-09-28 13:21:05,995 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-49
+2026-09-28 13:21:05,995 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-97
+2026-09-28 13:21:05,997 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-43
+2026-09-28 13:21:05,997 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-43
+2026-09-28 13:21:05,997 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-45
+2026-09-28 13:21:05,997 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-45
+2026-09-28 13:21:05,997 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-41
+2026-09-28 13:21:05,998 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-41
+2026-09-28 13:21:06,001 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-50
+2026-09-28 13:21:06,001 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-50
+2026-09-28 13:21:06,002 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-58
+2026-09-28 13:21:06,002 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-42
+2026-09-28 13:21:06,002 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-58
+2026-09-28 13:21:06,002 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-42
+2026-09-28 13:21:06,002 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-60
+2026-09-28 13:21:06,002 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-60
+2026-09-28 13:21:06,002 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-63
+2026-09-28 13:21:06,002 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-63
+2026-09-28 13:21:06,005 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-98
+2026-09-28 13:21:06,011 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-66
+2026-09-28 13:21:06,011 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-59
+2026-09-28 13:21:06,011 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-48
+2026-09-28 13:21:06,011 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-66
+2026-09-28 13:21:06,011 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-65
+2026-09-28 13:21:06,012 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-48
+2026-09-28 13:21:06,012 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-59
+2026-09-28 13:21:06,012 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-65
+2026-09-28 13:21:06,012 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-56
+2026-09-28 13:21:06,012 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-56
+2026-09-28 13:21:06,015 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-99
+2026-09-28 13:21:06,021 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-64
+2026-09-28 13:21:06,021 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-64
+2026-09-28 13:21:06,024 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-100
+2026-09-28 13:21:06,029 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-67
+2026-09-28 13:21:06,030 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-67
+2026-09-28 13:21:06,031 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-70
+2026-09-28 13:21:06,032 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-70
+2026-09-28 13:21:06,036 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-71
+2026-09-28 13:21:06,036 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-71
+2026-09-28 13:21:06,041 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-73
+2026-09-28 13:21:06,041 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-73
+2026-09-28 13:21:06,041 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-68
+2026-09-28 13:21:06,041 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-68
+2026-09-28 13:21:06,043 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-69
+2026-09-28 13:21:06,043 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-69
+2026-09-28 13:21:06,067 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-72
+2026-09-28 13:21:06,067 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-72
+2026-09-28 13:21:06,086 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-77
+2026-09-28 13:21:06,086 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-74
+2026-09-28 13:21:06,086 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-77
+2026-09-28 13:21:06,086 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-74
+2026-09-28 13:21:06,098 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-75
+2026-09-28 13:21:06,099 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-75
+2026-09-28 13:21:06,104 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-76
+2026-09-28 13:21:06,104 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-76
+2026-09-28 13:21:06,106 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-80
+2026-09-28 13:21:06,106 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-80
+2026-09-28 13:21:06,108 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-82
+2026-09-28 13:21:06,108 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-82
+2026-09-28 13:21:06,109 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-78
+2026-09-28 13:21:06,109 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-84
+2026-09-28 13:21:06,110 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-84
+2026-09-28 13:21:06,110 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-78
+2026-09-28 13:21:06,114 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-81
+2026-09-28 13:21:06,114 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-79
+2026-09-28 13:21:06,114 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-81
+2026-09-28 13:21:06,114 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-79
+2026-09-28 13:21:06,115 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-86
+2026-09-28 13:21:06,116 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-86
+2026-09-28 13:21:06,118 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-85
+2026-09-28 13:21:06,118 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-85
+2026-09-28 13:21:06,120 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-83
+2026-09-28 13:21:06,120 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-87
+2026-09-28 13:21:06,120 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-83
+2026-09-28 13:21:06,120 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-87
+2026-09-28 13:21:06,125 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-89
+2026-09-28 13:21:06,125 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-89
+2026-09-28 13:21:06,128 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-88
+2026-09-28 13:21:06,128 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-88
+2026-09-28 13:21:06,132 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-94
+2026-09-28 13:21:06,132 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-94
+2026-09-28 13:21:06,134 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-91
+2026-09-28 13:21:06,134 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-91
+2026-09-28 13:21:06,135 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-90
+2026-09-28 13:21:06,135 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-90
+2026-09-28 13:21:06,136 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-93
+2026-09-28 13:21:06,136 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-93
+2026-09-28 13:21:06,136 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-92
+2026-09-28 13:21:06,136 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-92
+2026-09-28 13:21:06,147 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-98
+2026-09-28 13:21:06,147 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-97
+2026-09-28 13:21:06,147 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-98
+2026-09-28 13:21:06,147 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-97
+2026-09-28 13:21:06,149 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-95
+2026-09-28 13:21:06,149 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-95
+2026-09-28 13:21:06,150 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-96
+2026-09-28 13:21:06,150 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-96
+2026-09-28 13:21:06,155 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-99
+2026-09-28 13:21:06,155 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-99
+2026-09-28 13:21:06,163 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-100
+2026-09-28 13:21:06,164 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-100
+2026-09-28 13:21:06,164 INFO o.a.j.e.StandardJMeterEngine: Notifying test listeners of end of test
+2026-09-28 13:21:06,170 INFO o.a.j.r.Summariser: summary +    999 in 00:00:01 = 1275.9/s Avg:    42 Min:     6 Max:   218 Err:   900 (90.09%) Active: 0 Started: 100 Finished: 100
+2026-09-28 13:21:06,171 INFO o.a.j.r.Summariser: summary =   1000 in 00:00:01 =  862.8/s Avg:    42 Min:     6 Max:   218 Err:   900 (90.00%)

@@ -6,3 +6,12 @@
 /docs/baselines/** -text whitespace=cr-at-eol
 /docs/stage1-report.md -text whitespace=cr-at-eol
 /docs/stage1-source.md -text whitespace=-blank-at-eol,cr-at-eol
+
+/docs/stage2-report.md -text whitespace=cr-at-eol
+/docs/stage2-source.md -text whitespace=-blank-at-eol,cr-at-eol
+/docs/stage2-test-results.txt -text whitespace=cr-at-eol
+/docs/stage2-restart-check.json -text whitespace=cr-at-eol
+
+/docs/stage3-report.md -text whitespace=cr-at-eol
+/docs/stage3-source.md -text whitespace=-blank-at-eol,cr-at-eol
+/docs/stage3-test-results.txt -text whitespace=cr-at-eol

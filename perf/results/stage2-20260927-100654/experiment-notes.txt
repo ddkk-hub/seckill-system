@@ -1,0 +1,1 @@
+Redis users-1 had a concurrent product-1 initialization at 2026-09-27 10:11:19-10:11:28 +08:00. Preserve raw data but exclude that case from the primary comparison; rerun it after all other workloads complete. Other cases did not overlap that initialization.

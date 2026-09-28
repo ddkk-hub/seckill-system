@@ -1,0 +1,18 @@
+{
+  "product": 89,
+  "requests": 500,
+  "users": 100,
+  "codes": {
+    "202": 500
+  },
+  "orders_while_paused": 0,
+  "pending_while_paused": 500,
+  "queue_while_paused": {
+    "queue_ready": 500,
+    "queue_unacked": 0
+  },
+  "final_orders": 500,
+  "final_pending": 0,
+  "final_stock": 0,
+  "resume_to_verified_seconds_including_jvm_start": 13.688000000000102
+}

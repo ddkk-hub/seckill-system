@@ -1,0 +1,44 @@
+Stage 3 final regression: 2026-09-28
+Java 21 / Spring Boot 3.3.5 / MySQL 8.0.46 / Redis 8.0.5 / RabbitMQ 4.0.5
+SECKILL_MYSQL_TEST=true; SECKILL_REDIS_TEST=true; SECKILL_MQ_TEST=true
+Command: mvnw.cmd test
+Maven exit code: 0; BUILD SUCCESS
+
+com.ddk.seckill.AsyncSeckillIntegrationTest: tests=8, failures=0, errors=0, skipped=0
+  PASS duplicateMessageCreatesOneOrder
+  PASS exhaustedRetryGoesToDeadLetterWithoutRefund
+  PASS publishFailureRetainsReservationAndRequestId
+  PASS invalidInputRejected
+  PASS transientFailureRollsBackThenRetries
+  PASS concurrentRequestsCannotOversell
+  PASS committedOrderRemainsSuccessfulWhenRedisCleanupFails
+  PASS pausedConsumerReturns202ThenDrains
+com.ddk.seckill.RedisFailureTest: tests=3, failures=0, errors=0, skipped=0
+  PASS reservationTimeoutIsNeverBlindlyCompensated
+  PASS redisUnavailableNeverCreatesOrder
+  PASS unknownCommitOutcomeNeverRestoresInventory
+com.ddk.seckill.RedisSeckillIntegrationTest: tests=9, failures=0, errors=0, skipped=0
+  PASS committedOrderRemainsSuccessfulWhenCleanupFails
+  PASS missingStockFailsClosedAndCannotBeReinitialized
+  PASS invalidPendingKeyDoesNotDeductStock
+  PASS repeatedCompensationOnlyRestoresOnce
+  PASS concurrentRequestsCannotOversell
+  PASS redisProfileHttpFlow
+  PASS compensationFailureKeepsStockReserved
+  PASS confirmedRollbackRestoresInventory
+  PASS purchaseUsesRedisAndRepeatedInitializationNeverRefills
+com.ddk.seckill.SeckillMySqlTest: tests=3, failures=0, errors=0, skipped=0
+  PASS httpFlowAndValidation
+  PASS failedOrderInsertRollsBackStock
+  PASS concurrentPurchasesNeverOversell
+com.ddk.seckill.SeckillServiceTest: tests=4, failures=0, errors=0, skipped=0
+  PASS invalidUserDoesNotTouchDatabase
+  PASS soldOutCreatesNoOrder
+  PASS missingProductReturns404
+  PASS successfulPurchaseKeepsPriceSnapshot
+com.example.demo.DemoApplicationTests: tests=1, failures=0, errors=0, skipped=0
+  PASS contextLoads
+
+{'tests': 28, 'failures': 0, 'errors': 0, 'skipped': 0}
+Package check: mvnw.cmd -q -DskipTests package; exit=0
+Stage 2 historical evidence: 62 SHA256 hashes verified, 0 mismatches.
