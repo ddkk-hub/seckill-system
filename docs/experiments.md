@@ -44,3 +44,13 @@ Redis 恢复后的全部库存基线及只读 HTTP 检查保存到 [stage2-resta
 - 保留原始 JTL、应用/JMeter 日志、资源采样、环境和运行脚本快照。100 并发受理 QPS 1929.26，不能等同于订单完成 QPS。
 - 阶段二 62 份历史证据文件 SHA256 校验一致；历史报告和源码归档未覆盖。
 - [阶段三源码归档](baselines/stage3-source.zip)、[校验清单](baselines/stage3-manifest.json)。此次仅写入本地工作区，未自动提交或推送 GitHub。
+
+## 阶段四：2026-09-28 限流与请求幂等
+
+- [设计与验收](stage4.md)、[完整代码](stage4-source.md)、[实测报告](stage4-report.md)、[42 项测试](stage4-test-results.txt)。
+- 原始证据：`perf/results/stage4-20260928-192252/`。同一 JAR 顺序运行 stage3 无保护和 stage4 有保护模式。
+- 共 21400 请求，受理/最终订单 12219，主动拒绝 429 共 9181，其他失败 0；包含预热。
+- 过载组各 10000 请求：无保护受理 10000、完成核验额外等待 38.19s；有保护受理 826、拒绝 9174、额外等待 0.33s。正常组各 500 请求均受理。
+- 观察队列峰值 8508 → 0；管理 API 统计约有 5 秒延迟，0 只代表采样未捕获积压，不能宣称从未有瞬时积压。
+- 单机 JMeter 闭环、仅一轮，主动拒绝会改变发送节奏；不作为长期稳定性或最大容量结论。
+- [源码 ZIP](baselines/stage4-source.zip)、[SHA256 清单](baselines/stage4-manifest.json)。本阶段尚未自动提交或推送 GitHub。

@@ -2,12 +2,12 @@ package com.ddk.seckill.controller;
 
 import com.ddk.seckill.entity.*;
 import com.ddk.seckill.service.AsyncSeckillService;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@ConditionalOnProperty(name="seckill.mode",havingValue="async")
+@ConditionalOnExpression("'${seckill.mode:mysql}' == 'async' and !${seckill.protection.enabled:false}")
 public class AsyncSeckillController {
     private final AsyncSeckillService service;
     public AsyncSeckillController(AsyncSeckillService service){this.service=service;}

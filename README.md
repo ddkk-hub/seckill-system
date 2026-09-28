@@ -1,6 +1,6 @@
 # seckill-system
 
-分阶段开发的 Java 秒杀系统。当前已实现阶段一 MySQL、阶段二 Redis + Lua，以及阶段三 RabbitMQ 异步下单。阶段三使用 202 + requestId 受理，再查询最终订单；启动与验收请先看 [阶段三说明](docs/stage3.md)。
+分阶段开发的 Java 秒杀系统。当前已实现阶段一 MySQL、阶段二 Redis + Lua、阶段三 RabbitMQ 异步下单，以及阶段四限流与请求幂等。阶段四下单必须携带 Idempotency-Key；请先阅读 [阶段四运行与验收说明](docs/stage4.md)。
 
 ## 阶段一历史启动方式（已迁移 Redis 的商品不要用此模式售卖）
 
@@ -68,3 +68,14 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\start-redis.ps
 运行与验收：[docs/stage3.md](docs/stage3.md)。完整代码：[docs/stage3-source.md](docs/stage3-source.md)。实测报告：[docs/stage3-report.md](docs/stage3-report.md)。
 
 启用 stage3 后下单返回 202 和 requestId，请查询 `/api/seckill/result/{requestId}` 确认最终订单。阶段一、二历史报告保留，不能把 202 直接当作成交成功。
+
+## 阶段四：限流与请求幂等
+
+[设计与验收](docs/stage4.md) · [完整代码](docs/stage4-source.md) · [压测报告](docs/stage4-report.md) · [42 项测试](docs/stage4-test-results.txt)
+
+```powershell
+.\mvnw.cmd -DskipTests "-Dseckill.build-name=seckill-system-stage4" package
+java -jar target/seckill-system-stage4.jar --spring.profiles.active=stage4
+```
+
+先停止占用 8081 的旧应用，再启动新 JAR。同一购买操作重试必须复用同一个 UUID 请求头 `Idempotency-Key`；超限返回 429，遵守 Retry-After。换一个新键会被视为新购买操作。

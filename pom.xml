@@ -27,6 +27,7 @@
 
     <!-- Java版本 -->
     <properties>
+        <seckill.build-name>${project.artifactId}-${project.version}</seckill.build-name>
         <java.version>21</java.version>
     </properties>
 
@@ -81,6 +82,7 @@
 
 
     <build>
+        <finalName>${seckill.build-name}</finalName>
 
         <plugins>
 

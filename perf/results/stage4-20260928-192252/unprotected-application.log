@@ -1,0 +1,30 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.5)
+
+2026-09-28T19:22:55.294+08:00  INFO 36056 --- [seckill-system] [           main] com.ddk.seckill.SeckillApplication       : Starting SeckillApplication v0.0.1-SNAPSHOT using Java 21.0.12.1 with PID 36056 (C:\seckill-system\target\seckill-system-stage4.jar started by Asus in C:\seckill-system)
+2026-09-28T19:22:55.315+08:00  INFO 36056 --- [seckill-system] [           main] com.ddk.seckill.SeckillApplication       : The following 1 profile is active: "stage3"
+2026-09-28T19:22:57.164+08:00  INFO 36056 --- [seckill-system] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-09-28T19:22:57.176+08:00  INFO 36056 --- [seckill-system] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-09-28T19:22:57.234+08:00  INFO 36056 --- [seckill-system] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 19 ms. Found 0 Redis repository interfaces.
+2026-09-28T19:22:58.762+08:00  INFO 36056 --- [seckill-system] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 18088 (http)
+2026-09-28T19:22:58.791+08:00  INFO 36056 --- [seckill-system] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-09-28T19:22:58.792+08:00  INFO 36056 --- [seckill-system] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2026-09-28T19:22:58.861+08:00  INFO 36056 --- [seckill-system] [           main] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
+2026-09-28T19:22:58.863+08:00  INFO 36056 --- [seckill-system] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3418 ms
+2026-09-28T19:23:02.746+08:00  INFO 36056 --- [seckill-system] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 18088 (http) with context path '/api'
+2026-09-28T19:23:02.757+08:00  INFO 36056 --- [seckill-system] [           main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2026-09-28T19:23:02.993+08:00  INFO 36056 --- [seckill-system] [io-18088-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-09-28T19:23:02.993+08:00  INFO 36056 --- [seckill-system] [io-18088-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-09-28T19:23:02.996+08:00  INFO 36056 --- [seckill-system] [io-18088-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2026-09-28T19:23:02.998+08:00  INFO 36056 --- [seckill-system] [           main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#5002fde9:0/SimpleConnection@6906be0f [delegate=amqp://seckill_app@127.0.0.1:5672/seckill, localPort=39634]
+2026-09-28T19:23:03.253+08:00  INFO 36056 --- [seckill-system] [           main] com.ddk.seckill.SeckillApplication       : Started SeckillApplication in 8.795 seconds (process running for 9.973)
+2026-09-28T19:23:20.683+08:00  INFO 36056 --- [seckill-system] [OrderListener-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-09-28T19:23:21.389+08:00  INFO 36056 --- [seckill-system] [OrderListener-1] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@60d0c750
+2026-09-28T19:23:21.392+08:00  INFO 36056 --- [seckill-system] [OrderListener-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.

@@ -15,3 +15,7 @@
 /docs/stage3-report.md -text whitespace=cr-at-eol
 /docs/stage3-source.md -text whitespace=-blank-at-eol,cr-at-eol
 /docs/stage3-test-results.txt -text whitespace=cr-at-eol
+
+/docs/stage4-report.md -text whitespace=cr-at-eol
+/docs/stage4-source.md -text whitespace=-blank-at-eol,cr-at-eol
+/docs/stage4-test-results.txt -text whitespace=cr-at-eol
