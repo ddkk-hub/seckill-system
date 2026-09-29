@@ -1,0 +1,11 @@
+WARN StatusConsoleListener The use of package scanning to locate plugins is deprecated and will be removed in a future release
+WARN StatusConsoleListener The use of package scanning to locate plugins is deprecated and will be removed in a future release
+WARN StatusConsoleListener The use of package scanning to locate plugins is deprecated and will be removed in a future release
+WARN StatusConsoleListener The use of package scanning to locate plugins is deprecated and will be removed in a future release
+Creating summariser <summary>
+Created the tree successfully using perf/stage4.jmx
+Starting standalone test @ 2026 Sep 29 14:50:15 CST (1790664615285)
+Waiting for possible Shutdown/StopTestNow/HeapDump/ThreadDump message on port 4445
+summary =  10000 in 00:00:04 = 2342.5/s Avg:    34 Min:     2 Max:   159 Err:  9131 (91.31%)
+Tidying up ...    @ 2026 Sep 29 14:50:19 CST (1790664619707)
+... end of run

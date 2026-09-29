@@ -1,0 +1,91 @@
+2026-09-29 15:15:30,960 INFO o.a.j.u.JMeterUtils: Setting Locale to zh_CN
+2026-09-29 15:15:31,006 INFO o.a.j.JMeter: Loading user properties from: C:\seckill-system\target\tools\apache-jmeter-5.6.3\bin\user.properties
+2026-09-29 15:15:31,007 INFO o.a.j.JMeter: Loading system properties from: C:\seckill-system\target\tools\apache-jmeter-5.6.3\bin\system.properties
+2026-09-29 15:15:31,007 INFO o.a.j.JMeter: Setting JMeter property: users=10
+2026-09-29 15:15:31,007 INFO o.a.j.JMeter: Setting JMeter property: loops=50
+2026-09-29 15:15:31,008 INFO o.a.j.JMeter: Setting JMeter property: ramp=1
+2026-09-29 15:15:31,008 INFO o.a.j.JMeter: Setting JMeter property: delay=100
+2026-09-29 15:15:31,008 INFO o.a.j.JMeter: Setting JMeter property: product=262
+2026-09-29 15:15:31,008 INFO o.a.j.JMeter: Setting JMeter property: port=18090
+2026-09-29 15:15:31,025 INFO o.a.j.JMeter: Copyright (c) 1998-2024 The Apache Software Foundation
+2026-09-29 15:15:31,025 INFO o.a.j.JMeter: Version 5.6.3
+2026-09-29 15:15:31,025 INFO o.a.j.JMeter: java.version=21.0.12.1
+2026-09-29 15:15:31,025 INFO o.a.j.JMeter: java.vm.name=OpenJDK 64-Bit Server VM
+2026-09-29 15:15:31,025 INFO o.a.j.JMeter: os.name=Windows 11
+2026-09-29 15:15:31,027 INFO o.a.j.JMeter: os.arch=amd64
+2026-09-29 15:15:31,027 INFO o.a.j.JMeter: os.version=10.0
+2026-09-29 15:15:31,027 INFO o.a.j.JMeter: file.encoding=UTF-8
+2026-09-29 15:15:31,027 INFO o.a.j.JMeter: java.awt.headless=true
+2026-09-29 15:15:31,027 INFO o.a.j.JMeter: Max memory     =536870912
+2026-09-29 15:15:31,027 INFO o.a.j.JMeter: Available Processors =32
+2026-09-29 15:15:31,040 INFO o.a.j.JMeter: Default Locale=中文 (中国)
+2026-09-29 15:15:31,040 INFO o.a.j.JMeter: JMeter  Locale=中文 (中国)
+2026-09-29 15:15:31,040 INFO o.a.j.JMeter: JMeterHome=C:\seckill-system\target\tools\apache-jmeter-5.6.3
+2026-09-29 15:15:31,040 INFO o.a.j.JMeter: user.dir  =C:\seckill-system
+2026-09-29 15:15:31,041 INFO o.a.j.JMeter: PWD       =C:\seckill-system
+2026-09-29 15:15:31,044 INFO o.a.j.JMeter: IP: 172.26.243.24 Name: LAPTOP-77E72ENH FullName: LAPTOP-77E72ENH
+2026-09-29 15:15:31,062 INFO o.a.j.s.FileServer: Default base='C:\seckill-system'
+2026-09-29 15:15:31,065 INFO o.a.j.s.FileServer: Set new base='C:\seckill-system\perf'
+2026-09-29 15:15:31,400 INFO o.a.j.s.SaveService: Testplan (JMX) version: 2.2. Testlog (JTL) version: 2.2
+2026-09-29 15:15:31,446 INFO o.a.j.s.SaveService: Using SaveService properties version 5.0
+2026-09-29 15:15:31,451 INFO o.a.j.s.SaveService: Using SaveService properties file encoding UTF-8
+2026-09-29 15:15:31,456 INFO o.a.j.s.SaveService: Loading file: perf\stage4.jmx
+2026-09-29 15:15:31,538 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/html is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2026-09-29 15:15:31,538 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xhtml+xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2026-09-29 15:15:31,538 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2026-09-29 15:15:31,538 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2026-09-29 15:15:31,539 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/vnd.wap.wml is org.apache.jmeter.protocol.http.parser.RegexpHTMLParser
+2026-09-29 15:15:31,539 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/css is org.apache.jmeter.protocol.http.parser.CssParser
+2026-09-29 15:15:31,560 INFO o.a.j.JMeter: Creating summariser <summary>
+2026-09-29 15:15:31,590 INFO o.a.j.e.StandardJMeterEngine: Running the test!
+2026-09-29 15:15:31,590 INFO o.a.j.s.SampleEvent: List of sample_variables: []
+2026-09-29 15:15:31,591 INFO o.a.j.s.SampleEvent: List of sample_variables: []
+2026-09-29 15:15:31,599 INFO o.a.j.e.u.CompoundVariable: Note: Function class names must contain the string: '.functions.'
+2026-09-29 15:15:31,600 INFO o.a.j.e.u.CompoundVariable: Note: Function class names must not contain the string: '.gui.'
+2026-09-29 15:15:31,710 INFO o.a.j.JMeter: 正在运行的测试 (1790666131710)
+2026-09-29 15:15:31,730 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 1 : Purchase
+2026-09-29 15:15:31,731 INFO o.a.j.e.StandardJMeterEngine: Starting 10 threads for group Purchase.
+2026-09-29 15:15:31,731 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
+2026-09-29 15:15:31,731 INFO o.a.j.t.ThreadGroup: Starting thread group... number=1 threads=10 ramp-up=1 delayedStart=false
+2026-09-29 15:15:31,740 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-1
+2026-09-29 15:15:31,744 INFO o.a.j.t.ThreadGroup: Started thread group number 1
+2026-09-29 15:15:31,744 INFO o.a.j.e.StandardJMeterEngine: All thread groups have been started
+2026-09-29 15:15:31,835 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-2
+2026-09-29 15:15:31,865 INFO o.a.j.p.h.s.HTTPHCAbstractImpl: Local host = LAPTOP-77E72ENH
+2026-09-29 15:15:31,876 INFO o.a.j.p.h.s.HTTPHC4Impl: HTTP request retry count = 0
+2026-09-29 15:15:31,878 INFO o.a.j.s.SampleResult: Note: Sample TimeStamps are START times
+2026-09-29 15:15:31,878 INFO o.a.j.s.SampleResult: sampleresult.default.encoding is set to UTF-8
+2026-09-29 15:15:31,878 INFO o.a.j.s.SampleResult: sampleresult.useNanoTime=true
+2026-09-29 15:15:31,878 INFO o.a.j.s.SampleResult: sampleresult.nanoThreadSleep=5000
+2026-09-29 15:15:31,936 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-3
+2026-09-29 15:15:32,034 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-4
+2026-09-29 15:15:32,099 INFO o.a.j.r.Summariser: summary +      1 in 00:00:00 =    2.6/s Avg:    82 Min:    82 Max:    82 Err:     0 (0.00%) Active: 4 Started: 4 Finished: 0
+2026-09-29 15:15:32,135 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-5
+2026-09-29 15:15:32,234 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-6
+2026-09-29 15:15:32,334 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-7
+2026-09-29 15:15:32,434 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-8
+2026-09-29 15:15:32,533 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-9
+2026-09-29 15:15:32,633 INFO o.a.j.t.JMeterThread: Thread started: Purchase 1-10
+2026-09-29 15:15:38,232 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-1
+2026-09-29 15:15:38,232 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-1
+2026-09-29 15:15:38,232 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-3
+2026-09-29 15:15:38,232 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-3
+2026-09-29 15:15:38,234 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-2
+2026-09-29 15:15:38,234 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-2
+2026-09-29 15:15:38,294 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-4
+2026-09-29 15:15:38,294 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-4
+2026-09-29 15:15:38,420 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-5
+2026-09-29 15:15:38,421 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-5
+2026-09-29 15:15:38,541 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-6
+2026-09-29 15:15:38,541 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-6
+2026-09-29 15:15:38,598 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-7
+2026-09-29 15:15:38,598 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-7
+2026-09-29 15:15:38,722 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-8
+2026-09-29 15:15:38,723 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-8
+2026-09-29 15:15:38,846 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-9
+2026-09-29 15:15:38,846 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-9
+2026-09-29 15:15:38,909 INFO o.a.j.t.JMeterThread: Thread is done: Purchase 1-10
+2026-09-29 15:15:38,909 INFO o.a.j.t.JMeterThread: Thread finished: Purchase 1-10
+2026-09-29 15:15:38,910 INFO o.a.j.e.StandardJMeterEngine: Notifying test listeners of end of test
+2026-09-29 15:15:38,913 INFO o.a.j.r.Summariser: summary +    499 in 00:00:07 =   73.2/s Avg:    16 Min:    10 Max:    82 Err:     0 (0.00%) Active: 0 Started: 10 Finished: 10
+2026-09-29 15:15:38,914 INFO o.a.j.r.Summariser: summary =    500 in 00:00:07 =   69.4/s Avg:    16 Min:    10 Max:    82 Err:     0 (0.00%)

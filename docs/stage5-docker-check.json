@@ -1,0 +1,199 @@
+{
+  "base": "http://localhost:18081/api",
+  "requestId": "ddd15ca7-6775-32ee-9509-d98afbc44f6d",
+  "orderId": 1,
+  "stock_before": 100,
+  "stock_after": 99,
+  "initial_passed": true,
+  "error_status": 400,
+  "error_code": "INVALID_REQUEST",
+  "health": "UP",
+  "recreation_replay_passed": true,
+  "checked_at": "2026-09-29T15:17:47.309930+08:00",
+  "jar_sha256": "e4410d676f162ba01775e370a8bacf7a2964d51ed13de2ab58fc02c4c18d888b",
+  "image_id": "sha256:eb7be0fa5589dccfa0c9d0a656cfe1117fa78c0021718ab2be7d9fef4aceaa3b",
+  "docker_version": "29.1.3",
+  "compose_version": "2.40.3+ds1-0ubuntu1",
+  "uid": 10001,
+  "persistent_business_log_found": true,
+  "services": [
+    {
+      "Service": "app",
+      "State": "running",
+      "Health": "healthy",
+      "ExitCode": 0,
+      "Publishers": [
+        {
+          "URL": "127.0.0.1",
+          "TargetPort": 8081,
+          "PublishedPort": 18081,
+          "Protocol": "tcp"
+        }
+      ]
+    },
+    {
+      "Service": "bootstrap",
+      "State": "exited",
+      "Health": "",
+      "ExitCode": 0,
+      "Publishers": []
+    },
+    {
+      "Service": "mysql",
+      "State": "running",
+      "Health": "healthy",
+      "ExitCode": 0,
+      "Publishers": [
+        {
+          "URL": "",
+          "TargetPort": 3306,
+          "PublishedPort": 0,
+          "Protocol": "tcp"
+        },
+        {
+          "URL": "",
+          "TargetPort": 33060,
+          "PublishedPort": 0,
+          "Protocol": "tcp"
+        }
+      ]
+    },
+    {
+      "Service": "rabbitmq",
+      "State": "running",
+      "Health": "healthy",
+      "ExitCode": 0,
+      "Publishers": [
+        {
+          "URL": "",
+          "TargetPort": 4369,
+          "PublishedPort": 0,
+          "Protocol": "tcp"
+        },
+        {
+          "URL": "",
+          "TargetPort": 5671,
+          "PublishedPort": 0,
+          "Protocol": "tcp"
+        },
+        {
+          "URL": "",
+          "TargetPort": 5672,
+          "PublishedPort": 0,
+          "Protocol": "tcp"
+        },
+        {
+          "URL": "",
+          "TargetPort": 15671,
+          "PublishedPort": 0,
+          "Protocol": "tcp"
+        },
+        {
+          "URL": "",
+          "TargetPort": 15672,
+          "PublishedPort": 0,
+          "Protocol": "tcp"
+        },
+        {
+          "URL": "",
+          "TargetPort": 15691,
+          "PublishedPort": 0,
+          "Protocol": "tcp"
+        },
+        {
+          "URL": "",
+          "TargetPort": 15692,
+          "PublishedPort": 0,
+          "Protocol": "tcp"
+        },
+        {
+          "URL": "",
+          "TargetPort": 25672,
+          "PublishedPort": 0,
+          "Protocol": "tcp"
+        }
+      ]
+    },
+    {
+      "Service": "redis",
+      "State": "running",
+      "Health": "healthy",
+      "ExitCode": 0,
+      "Publishers": [
+        {
+          "URL": "",
+          "TargetPort": 6379,
+          "PublishedPort": 0,
+          "Protocol": "tcp"
+        }
+      ]
+    }
+  ],
+  "official_image_verification": [
+    {
+      "image": "eclipse-temurin:21-jre-jammy",
+      "tag_digest": "sha256:e9aaf73145bbd1f9f6ec7f6867dd75a44f34b1a6c32a813504bf4129be2d09d7",
+      "linux_amd64_manifest": "sha256:14731f0ec76c841877c8858e1a29413d7acacda5c5ce567eaf6e5f19913b7cb1",
+      "config_digest": "sha256:7f60ac89e58910e103bf03ecb0ae65f2dafca99d1e612b7d75db5d23848c7432",
+      "layer_digests": [
+        "sha256:20c3783cc497b5b0df1fc5f92bd64c3d2fbb24057c88692c8fda205b6ea8a2f2",
+        "sha256:283c139709fe7bcd89a1cc7c302b901b0d9729aaa0536d1eaa8d46d48c8e9cd6",
+        "sha256:2b841c180a91f75f5d01a2aed904d56f2c6a0808b2346236f853ab6a26841b07",
+        "sha256:63613abe73dc47abe044fc4ab923aeaf0ea86c58ced1fe5e23e632f9176a93ea",
+        "sha256:ce110be0146dbad245d038711c5d2bb77782715c20216ddd46bde4b6ebf07a22"
+      ]
+    },
+    {
+      "image": "mysql:8.0.46",
+      "tag_digest": "sha256:7dcddc01f13bab2f15cde676d44d01f61fc9f99fe7785e86196dfc07d358ae2b",
+      "linux_amd64_manifest": "sha256:62fb722c78b24245ddff1796a0fcee4a49cc5b87e0aaaf20c92d1da9e0a2497b",
+      "config_digest": "sha256:6cd09145362dfe6831b14545de3d5fd6cc75c37cfd6ef8561429c1fc73518b39",
+      "layer_digests": [
+        "sha256:edf85873f64e24f7d5f7e8a2fc498afd54aa646dbf1bc7d5a2f1bf03b096d973",
+        "sha256:6ef6c7b50a938e4f81a40ed970b0a1b4d6409d55032d50c0d8a30042b484226f",
+        "sha256:e3e5d1ac74c19e81a17008c972f1ca25e9c4dc509307c3eee1382e7301f0f7a4",
+        "sha256:0d74d296605b0eb8f94dd83441a08a413f4ae4f2aafa9e7d1e2da5adcdade645",
+        "sha256:297d04cfe4705c95a7d1a6abb5831e3637edfebdb6b639661c8c66ff2220cd64",
+        "sha256:4c8a3e0d4e4b216b443a3125ae3f947d8d0e9df399ba4af9bbb5823703c95c1f",
+        "sha256:a63160a5eda1f2bc97de740813d14908519eba5d1d59da5f7f6934126d33ce17",
+        "sha256:7534d1db9f8dcc7acdd28f0655c93bd0b045dee128866ff2809c833a6462eaf1",
+        "sha256:49ec2dab01d93d549839d59c815b48a834beca654fc9d45a86eaddc8fd82cc5a",
+        "sha256:ab24264a27e9ec0085b30b83b81272417504c9e231d006975e9956af3526a3ab",
+        "sha256:96d30d9fbee877d823d9807f43df6c030983d61d7a645d0f5ac2c7154a8abd12"
+      ]
+    },
+    {
+      "image": "redis:8.0.5",
+      "tag_digest": "sha256:dbd4be0dd40f16bd91486087680fc2d25666e807b937774906dc111a621ce556",
+      "linux_amd64_manifest": "sha256:0c1fd4ba160ccc49565ceda980791adfaaee3254ca5db70ec656cb62c25d14a4",
+      "config_digest": "sha256:289be1d1b231ba16d8a07124041266b2ff8c9eb69343c64dbb299e57d2975d9a",
+      "layer_digests": [
+        "sha256:4831516dd0cb86845f5f902cb9b9d25b5c853152c337eb57e4737a9b7e2a2eb9",
+        "sha256:137e43a524a7f9918fab33b910d546b03400987d354cc013577d97c993a463e7",
+        "sha256:e78b6921b9f9dfc7ce9c8ef7a4f5b8b0cbc60c8f80dc10104bedadd05081e7e5",
+        "sha256:8a620473af49dfb632b3efcf899bb2707c408c2569a021379b9b069689046e98",
+        "sha256:259fbf7ff3166d9c50287a65afb1483f86c537098b79c21709ca394f53738059",
+        "sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1",
+        "sha256:d49df70a9a2d9335946f48a809781ed8d0ce5c5245e9537e2bf7aba278bd2b8c"
+      ]
+    },
+    {
+      "image": "rabbitmq:4.0.5-management",
+      "tag_digest": "sha256:697da87bf89699fda7c7da8067cc91b055353056d52a07e7f3c41bd67b0b5f71",
+      "linux_amd64_manifest": "sha256:98edbaa61f01b6a658b076e1364c071154d2407b7cc097d53952bf6719d974ac",
+      "config_digest": "sha256:7792c9bbf15fda533a34b7e65176f075fd5a73be6838abc3a9a0c0ce768dc63c",
+      "layer_digests": [
+        "sha256:5a7813e071bfadf18aaa6ca8318be4824a9b6297b3240f2cc84c1db6f4113040",
+        "sha256:3184c461034333d3162912fa82f80119b61f31562a1e4dfcb4fd458aef66247f",
+        "sha256:0736e22aa50752aa77ada17c4d316097c8e9f228643c21709d84644ce7888050",
+        "sha256:6043017ac9e6f281cb72b166634b80aff87424e820778497006ae8e237164576",
+        "sha256:fddadda2f4710020eeb3037641201f6cfbcc936b2db37dd9072e64e1f523c1ef",
+        "sha256:8fba29582788121ab19ae0098ab2cdb5d992148b7af54a896b7218b14bf7bb27",
+        "sha256:7189d2016998eaf635886872a7c7cf5c6c19debbc6304a03265f71670e2fae12",
+        "sha256:0a3acd9fa55f31a331a5553e1835fccaecdc6af0c09edd8374a346e5852735c4",
+        "sha256:4ee57700f1f0e7278077f4ebaf4cf98eeaa4b006ad50ad7ca63aa6aa21ff3d88",
+        "sha256:2e4618a5be6169e12c12a3d114a7c0523661a25d675cb865c834636cad53ef2b"
+      ]
+    }
+  ]
+}

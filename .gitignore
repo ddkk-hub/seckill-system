@@ -37,3 +37,6 @@ build/
 .env
 __pycache__/
 *.pyc
+
+# Runtime log files and local deployment state
+/logs/

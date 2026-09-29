@@ -76,6 +76,7 @@ public class ProtectedSeckillService {
         if (result == null || result != 1) throw RedisStockService.unavailable("STOCK_OR_IDEMPOTENCY_STATE_INVALID");
         try {
             publisher.publish(message);
+            log.info("submission queued request={}", id);
             return new AsyncReceipt(id, "QUEUED", null);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt(); return unknown(id, e);

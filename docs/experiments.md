@@ -54,3 +54,13 @@ Redis 恢复后的全部库存基线及只读 HTTP 检查保存到 [stage2-resta
 - 观察队列峰值 8508 → 0；管理 API 统计约有 5 秒延迟，0 只代表采样未捕获积压，不能宣称从未有瞬时积压。
 - 单机 JMeter 闭环、仅一轮，主动拒绝会改变发送节奏；不作为长期稳定性或最大容量结论。
 - [源码 ZIP](baselines/stage4-source.zip)、[SHA256 清单](baselines/stage4-manifest.json)。本阶段尚未自动提交或推送 GitHub。
+
+## 阶段五：2026-09-29 工程化验收
+
+- 阶段四已推送 GitHub，提交 `9e1e8cb`。阶段五当前为本地交付，等待用户验收。
+- [设计与验收](stage5.md)、[完整代码](stage5-source.md)、[53 项测试](stage5-test-results.txt)、[压测报告](stage5-report.md)、[Docker 证据](stage5-docker-check.json)。
+- 最终构建实验：`perf/results/stage5-20260929-151306/`。21400 请求，3085 最终订单，18315 次 429，其他失败 0；库存与订单守恒、pending=0。
+- HTTP 406 修复前实验 `perf/results/stage5-20260929-144850/` 原样保留，含当时源码快照；不与最终结果混合。
+- Docker 独立环境验证非 root、健康、幂等和保留卷重建；库存 100 → 99，与本机商品库存分开。
+- 阶段二、三、四历史归档分别核对 62、57、34 份文件 SHA256 一致。
+- [源码归档](baselines/stage5-source.zip)、[校验清单](baselines/stage5-manifest.json)。

@@ -1,81 +1,127 @@
 # seckill-system
 
-分阶段开发的 Java 秒杀系统。当前已实现阶段一 MySQL、阶段二 Redis + Lua、阶段三 RabbitMQ 异步下单，以及阶段四限流与请求幂等。阶段四下单必须携带 Idempotency-Key；请先阅读 [阶段四运行与验收说明](docs/stage4.md)。
+一个从单体 MySQL 逐步演进到 Redis + RabbitMQ 的 Java 秒杀教学项目。实现库存预扣、异步下单、请求幂等、令牌桶限流，并保留每阶段完整代码、测试和原始 JMeter 证据。
 
-## 阶段一历史启动方式（已迁移 Redis 的商品不要用此模式售卖）
+**技术栈：Java 21 · Spring Boot 3.3.5 · MyBatis · MySQL 8.0.46 · Redis + Lua · RabbitMQ · Docker Compose。**
 
-创建 MySQL 数据库 seckill 和商品表后，执行 `src/main/resources/db/stage1.sql` 创建订单表。现有开发数据库已完成此步骤。商品表要求 InnoDB、id 主键、name、stock、price 字段，具体说明见阶段一文档。
+当前已完成阶段五实现与本机自动化验证，等待项目导师流程中的手工验收。详细结果见 [阶段五说明](docs/stage5.md)、[测试记录](docs/stage5-test-results.txt) 和 [压测报告](docs/stage5-report.md)。
 
-在项目根目录创建 `application-local.properties`，填写自己的数据库密码：
+## 项目能力
 
-```properties
-spring.datasource.password=你的本机数据库密码
+- Redis Lua 原子库存预扣；商品缓存缺失时停止售卖，不自动从旧数据库库存补满。
+- RabbitMQ 发布确认、消费事务、有限重试与死信；HTTP 202 表示受理，结果查询 SUCCESS 才表示成交。
+- 同一 userId + Idempotency-Key 重试返回原请求，MySQL 请求流水处理重复消息。
+- 全局/IP/用户令牌桶限流，查询接口也受保护；429 返回 Retry-After。
+- 统一错误响应、HTTP traceId 与业务 requestId 日志关联、日志滚动与健康检查。
+- 非 root Docker 应用、独立数据卷、依赖健康等待和一次性库存初始化。
+
+## 架构
+
+```mermaid
+flowchart LR
+    U[客户端] --> L[参数校验 / 令牌桶]
+    L --> R[Redis 幂等 / Lua 预扣]
+    R --> MQ[RabbitMQ]
+    MQ --> C[消费者]
+    C --> DB[MySQL 流水与订单事务]
+    C --> S[Redis 完成状态 / ACK]
+    U --> Q[结果查询]
+    Q --> DB
 ```
 
-该文件已被 Git 忽略。也可使用环境变量 `SPRING_DATASOURCE_PASSWORD`；如需更改数据库地址或用户名，可使用对应的 `SPRING_DATASOURCE_URL`、`SPRING_DATASOURCE_USERNAME`。
+[完整架构图与一致性说明](docs/architecture.md) · [部署和排错手册](docs/deployment.md)
+
+## 快速启动：独立 Docker 演示
+
+需要 JDK 21、Python 3 和 Docker Engine/Compose。PowerShell 在项目根目录执行：
 
 ```powershell
-.\mvnw.cmd spring-boot:run
+.\mvnw.cmd -DskipTests "-Dseckill.build-name=seckill-system-stage5" package
+python scripts/init-docker-env.py
+docker build -t seckill-system:stage5 .
+docker compose up -d --wait --wait-timeout 240
 ```
 
-- 商品查询：`GET http://localhost:8081/api/product/1`
-- 购买一件：`POST http://localhost:8081/api/seckill/1?userId=1001`
-- 订单查询：`GET http://localhost:8081/api/order/{id}`
+Linux/macOS 构建改用 `sh ./mvnw -DskipTests -Dseckill.build-name=seckill-system-stage5 package`。如果 Docker 仅安装在 WSL 中，请使用 [已验证的 WSL 命令](docs/deployment.md#本机-windows--wsl-的实际命令)。
 
-## 测试
+访问 `http://localhost:18081/api/actuator/health`，预期 UP。容器初始化自己的商品 1，初始库存 100；本机自动验收已购买一件时库存为 99。这套数据与原 Windows/WSL 服务、8081 应用隔离。
+
+.env 由脚本生成随机凭据且不覆盖已有文件，已被 Git 忽略。不要把真实凭据写入仓库。数据库、Redis 和 MQ 不对宿主机映射端口。详细启动顺序、数据卷与故障处理见部署手册。
+
+## 下单与重试
 
 ```powershell
-.\mvnw.cmd test
+$headers = @{ 'Idempotency-Key' = [guid]::NewGuid().ToString() }
+$r = Invoke-RestMethod -Method Post -Headers $headers 'http://localhost:18081/api/seckill/1?userId=1001'
+$r
+Start-Sleep -Seconds 1
+Invoke-RestMethod "http://localhost:18081/api/seckill/result/$($r.requestId)"
+Invoke-RestMethod -Method Post -Headers $headers 'http://localhost:18081/api/seckill/1?userId=1001'
+```
+
+一次购买操作只有一个键，网络重试必须复用；换新键会被视为新的购买操作。相同键不能更换商品。
+
+| 接口 | 说明 |
+|---|---|
+| GET /api/product/{id} | 查询实时 Redis 库存 |
+| POST /api/seckill/{productId}?userId=... | 必须携带 UUID 请求头 Idempotency-Key |
+| GET /api/seckill/result/{requestId} | 查询 PENDING / SUCCESS / UNKNOWN / REVIEW_REQUIRED |
+| GET /api/order/{id} | 查询已创建订单 |
+| GET /api/actuator/health | 整体健康，无内部连接明细 |
+
+首次成功受理返回 202 + requestId；同键重试可能返回 202/PENDING 或 200/SUCCESS。400 为参数错误，409 为售罄/键冲突，429 为限流，503 为不可用或不确定。UNKNOWN 不应换键重下；保留编号并核查。
+
+## 使用现有本机服务
+
+凭据放入被忽略的 application-local.properties。沿用前面阶段已准备的表和 Redis 库存，停止占用 8081 的旧应用后运行：
+
+```powershell
+java -jar target/seckill-system-stage5.jar --spring.profiles.active=stage5
+```
+
+完整文件和首次建库说明在各阶段文档中。不要把已迁移商品切回 MySQL 扣库存模式，也不要从 product.stock 基线覆盖实时 Redis 库存。
+
+## 测试与压测
+
+默认测试会跳过需要外部组件的集成测试。使用本机测试数据库/Redis/MQ，开启全部验证：
+
+```powershell
 $env:SECKILL_MYSQL_TEST='true'
+$env:SECKILL_REDIS_TEST='true'
+$env:SECKILL_MQ_TEST='true'
+$env:SECKILL_PROTECTION_TEST='true'
+$env:SECKILL_ENGINEERING_TEST='true'
 .\mvnw.cmd test
-Remove-Item Env:SECKILL_MYSQL_TEST
 ```
 
-默认只跑单元测试；启用环境开关后运行真实 MySQL 测试，需要已建好表。
+已执行 53 项测试，失败/错误/跳过均为 0。测试用独立商品和队列，但会在指定数据库中建表与写入测试数据，只在开发/测试环境执行。
 
-## 开发与实验记录
-
-- [阶段一教学说明](docs/stage1.md)
-- [阶段一完整源码快照文本](docs/stage1-source.md)（历史版本；当前配置以源码和本 README 为准）
-- [实验索引](docs/experiments.md)
-- [阶段一压测报告](docs/stage1-report.md)
-- [阶段二设计](docs/stage2-plan.md)
-- [阶段二环境准备](docs/stage2-environment.md)
-
-`perf/results/` 保存原始实测证据。`target/` 是可删除的构建和工具目录，不纳入 Git。历史源码快照中的数据库密码已移除。
-
-当前是教学阶段：尚无认证、请求幂等和限流；初始压测不是生产容量结论。
-
-## 阶段二启动（已迁移商品使用此模式）
-
-本机 Redis 与商品 1 的 98 件库存已准备好。新环境先执行 `src/main/resources/db/stage2.sql`，并按 [阶段二说明](docs/stage2.md) 停止商品写入后初始化库存。
+JMeter 5.6.3 放在 target/tools/apache-jmeter-5.6.3，Python 需要 psutil。先完成打包，再运行：
 
 ```powershell
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\start-redis.ps1
-.\mvnw.cmd spring-boot:run '-Dspring-boot.run.profiles=stage2'
+python perf/run_stage5.py --requests 10000
 ```
 
-默认不带 profile 的命令仍为 MySQL 模式，不得用于已迁移到 Redis 的同一商品。阶段二实时库存以 Redis 为准，MySQL product.stock 是导入基线。
+脚本创建独立商品、使用 18090 端口，对比同一 JAR 的 stage4/stage5 配置，记录原始 JTL、QPS、响应时间、429、最终订单、MySQL 状态、CPU 和队列采样。运行前停止独立 Docker 演示容器以减少干扰，结束后可恢复。压测工具位于 target，执行 Maven clean 会删除它，需要重新准备。
 
-- [阶段二完整说明](docs/stage2.md)
-- [完整代码](docs/stage2-source.md)
-- [对比压测报告](docs/stage2-report.md)
+本项目保留短时探索性实测，**不把 HTTP 202 或快速 429 当作最终成交吞吐，也不宣称单轮实验等于生产容量**。
 
-运行全部 20 项测试需同时设置 `SECKILL_MYSQL_TEST=true` 和 `SECKILL_REDIS_TEST=true`。源码密码仍在被 Git 忽略的本地配置里。
+## 学习路径与证据
 
-## 阶段三（RabbitMQ 异步下单）
+| 阶段 | 能力 | 资料 |
+|---|---|---|
+| 一 | MySQL 单体、事务扣库存与订单 | [完整代码](docs/stage1-source.md) / [报告](docs/stage1-report.md) |
+| 二 | Redis + Lua 库存预扣 | [说明](docs/stage2.md) / [报告](docs/stage2-report.md) |
+| 三 | RabbitMQ 异步、确认与消息去重 | [说明](docs/stage3.md) / [报告](docs/stage3-report.md) |
+| 四 | 限流、防刷与请求幂等 | [说明](docs/stage4.md) / [报告](docs/stage4-report.md) |
+| 五 | 日志、异常、Docker 与项目整理 | [说明](docs/stage5.md) / [完整代码](docs/stage5-source.md) / [报告](docs/stage5-report.md) |
 
-运行与验收：[docs/stage3.md](docs/stage3.md)。完整代码：[docs/stage3-source.md](docs/stage3-source.md)。实测报告：[docs/stage3-report.md](docs/stage3-report.md)。
+[全部实验索引](docs/experiments.md) · [源码 ZIP 与 SHA256 清单](docs/baselines/)
 
-启用 stage3 后下单返回 202 和 requestId，请查询 `/api/seckill/result/{requestId}` 确认最终订单。阶段一、二历史报告保留，不能把 202 直接当作成交成功。
+Java 包始终为 com.ddk.seckill，主目录保持 controller / service / entity / mapper / SeckillApplication.java。部署文件位于 deploy，压测位于 perf，文档位于 docs。
 
-## 阶段四：限流与请求幂等
+## 尚未解决的问题
 
-[设计与验收](docs/stage4.md) · [完整代码](docs/stage4-source.md) · [压测报告](docs/stage4-report.md) · [42 项测试](docs/stage4-test-results.txt)
+userId 没有登录认证，结果接口未校验用户归属；不能直接公网开放。Redis 与 MQ 没有跨系统事务，未决预扣/死信仍需人工对账；Redis AOF everysec 和单节点部署不保证任意故障下零丢失。永久幂等记录需要归档策略，当前多 key Lua 不能直接跨 Redis Cluster 槽使用。
 
-```powershell
-.\mvnw.cmd -DskipTests "-Dseckill.build-name=seckill-system-stage4" package
-java -jar target/seckill-system-stage4.jar --spring.profiles.active=stage4
-```
-
-先停止占用 8081 的旧应用，再启动新 JAR。同一购买操作重试必须复用同一个 UUID 请求头 `Idempotency-Key`；超限返回 429，遵守 Retry-After。换一个新键会被视为新购买操作。
+Docker 验收覆盖保留数据卷的容器重建，没有覆盖断电恢复、集群高可用或备份恢复。普通 `docker compose down` 保留卷；添加 `-v` 会删除数据，不要用于保留演示记录的重启操作。

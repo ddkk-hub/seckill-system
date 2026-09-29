@@ -1,0 +1,16 @@
+Stage 5 final build: 2026-09-29
+Command: mvnw.cmd -Dseckill.build-name=seckill-system-stage5 package
+Enabled integration flags: MYSQL, REDIS, MQ, PROTECTION, ENGINEERING
+
+com.ddk.seckill.AsyncSeckillIntegrationTest: tests=8, failures=0, errors=0, skipped=0
+com.ddk.seckill.EngineeringIntegrationTest: tests=11, failures=0, errors=0, skipped=0
+com.ddk.seckill.ProtectedSeckillIntegrationTest: tests=14, failures=0, errors=0, skipped=0
+com.ddk.seckill.RedisFailureTest: tests=3, failures=0, errors=0, skipped=0
+com.ddk.seckill.RedisSeckillIntegrationTest: tests=9, failures=0, errors=0, skipped=0
+com.ddk.seckill.SeckillMySqlTest: tests=3, failures=0, errors=0, skipped=0
+com.ddk.seckill.SeckillServiceTest: tests=4, failures=0, errors=0, skipped=0
+com.example.demo.DemoApplicationTests: tests=1, failures=0, errors=0, skipped=0
+
+Tests run: 53, Failures: 0, Errors: 0, Skipped: 0
+BUILD SUCCESS
+Includes HTTP 406 preservation regression test.
