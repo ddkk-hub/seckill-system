@@ -1,0 +1,134 @@
+{
+  "username": "demo_970e62ae02054c",
+  "requestId": "01cf7c82-c563-3707-b3d0-4c75508fd25a",
+  "orderId": 1,
+  "userId": 8248826959329,
+  "stock_before": 100,
+  "stock_after": 99,
+  "health": "UP",
+  "anonymous_status": 401,
+  "forged_user_status": 400,
+  "foreign_request_status": 404,
+  "foreign_order_status": 404,
+  "logout_status": 401,
+  "initial_passed": true,
+  "restart_replay_passed": true,
+  "checked_at": "2026-09-30T08:58:20.716309+08:00",
+  "jar_sha256": "7bdc0f452bb8cc18c2f4181f5ba2951862699c75a03b8cfac651539f83e9d3a0",
+  "image_id": "sha256:53bc1c8e54aca06721c43899321a31c5be1411c9d8a0e375be9bb063414a7725",
+  "uid": 10001,
+  "services": [
+    {
+      "Service": "app",
+      "State": "running",
+      "Health": "healthy",
+      "ExitCode": 0,
+      "Publishers": [
+        {
+          "URL": "127.0.0.1",
+          "TargetPort": 8081,
+          "PublishedPort": 18082,
+          "Protocol": "tcp"
+        }
+      ]
+    },
+    {
+      "Service": "bootstrap",
+      "State": "exited",
+      "Health": "",
+      "ExitCode": 0,
+      "Publishers": []
+    },
+    {
+      "Service": "mysql",
+      "State": "running",
+      "Health": "healthy",
+      "ExitCode": 0,
+      "Publishers": [
+        {
+          "URL": "",
+          "TargetPort": 3306,
+          "PublishedPort": 0,
+          "Protocol": "tcp"
+        },
+        {
+          "URL": "",
+          "TargetPort": 33060,
+          "PublishedPort": 0,
+          "Protocol": "tcp"
+        }
+      ]
+    },
+    {
+      "Service": "rabbitmq",
+      "State": "running",
+      "Health": "healthy",
+      "ExitCode": 0,
+      "Publishers": [
+        {
+          "URL": "",
+          "TargetPort": 4369,
+          "PublishedPort": 0,
+          "Protocol": "tcp"
+        },
+        {
+          "URL": "",
+          "TargetPort": 5671,
+          "PublishedPort": 0,
+          "Protocol": "tcp"
+        },
+        {
+          "URL": "",
+          "TargetPort": 5672,
+          "PublishedPort": 0,
+          "Protocol": "tcp"
+        },
+        {
+          "URL": "",
+          "TargetPort": 15671,
+          "PublishedPort": 0,
+          "Protocol": "tcp"
+        },
+        {
+          "URL": "",
+          "TargetPort": 15672,
+          "PublishedPort": 0,
+          "Protocol": "tcp"
+        },
+        {
+          "URL": "",
+          "TargetPort": 15691,
+          "PublishedPort": 0,
+          "Protocol": "tcp"
+        },
+        {
+          "URL": "",
+          "TargetPort": 15692,
+          "PublishedPort": 0,
+          "Protocol": "tcp"
+        },
+        {
+          "URL": "",
+          "TargetPort": 25672,
+          "PublishedPort": 0,
+          "Protocol": "tcp"
+        }
+      ]
+    },
+    {
+      "Service": "redis",
+      "State": "running",
+      "Health": "healthy",
+      "ExitCode": 0,
+      "Publishers": [
+        {
+          "URL": "",
+          "TargetPort": 6379,
+          "PublishedPort": 0,
+          "Protocol": "tcp"
+        }
+      ]
+    }
+  ],
+  "restart_scope": "compose stop/up with named volumes; re-login and same-key replay; not a crash recovery test"
+}

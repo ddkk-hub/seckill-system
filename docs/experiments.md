@@ -64,3 +64,12 @@ Redis 恢复后的全部库存基线及只读 HTTP 检查保存到 [stage2-resta
 - Docker 独立环境验证非 root、健康、幂等和保留卷重建；库存 100 → 99，与本机商品库存分开。
 - 阶段二、三、四历史归档分别核对 62、57、34 份文件 SHA256 一致。
 - [源码归档](baselines/stage5-source.zip)、[校验清单](baselines/stage5-manifest.json)。
+
+## 阶段六：2026-09-29 登录认证与订单归属
+
+- 阶段五已验收并推送 `866bd0f`。阶段六由用户选择扩展目标，当前为本地交付等待验收。
+- [设计/九项讲解](stage6.md)、[完整代码](stage6-source.md)、[66 项测试](stage6-test-results.txt)、[压测报告](stage6-report.md)、[Docker 验收](stage6-docker-check.json)。
+- 原始实验 `perf/results/stage6-20260929-161625/`：21400 请求，3256 最终订单，18144 次 429，其他失败 0，库存守恒且 pending=0。
+- 相同最终 JAR、100 个预建登录身份，对比 stage5 与 stage6。正常组平均响应 15.95ms → 20.32ms；阶段六过载成功受理 QPS 214.83。不能据此推导密码登录吞吐或长期容量。
+- 归档保留 JTL、应用/JMeter 日志、资源采样、环境配置和脚本；访问令牌 CSV 不归档，实验结束已撤销临时登录态。
+- [源码 ZIP](baselines/stage6-source.zip)、[SHA256 清单](baselines/stage6-manifest.json)。

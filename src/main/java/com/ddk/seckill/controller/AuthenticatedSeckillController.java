@@ -10,14 +10,15 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 @RestController
-@ConditionalOnExpression("${seckill.protection.enabled:false} and !${seckill.auth.enabled:false}")
-public class ProtectedSeckillController {
+@ConditionalOnExpression("${seckill.auth.enabled:false}")
+public class AuthenticatedSeckillController {
     private final ProtectedSeckillService protectedService;
     private final AsyncSeckillService async;
     private final TokenBucketLimiter limiter;
+    private final OwnedOrderService owned;
 
-    public ProtectedSeckillController(ProtectedSeckillService protectedService, AsyncSeckillService async, TokenBucketLimiter limiter) {
-        this.protectedService = protectedService; this.async = async; this.limiter = limiter;
+    public AuthenticatedSeckillController(ProtectedSeckillService protectedService, AsyncSeckillService async, TokenBucketLimiter limiter, OwnedOrderService owned) {
+        this.protectedService = protectedService; this.async = async; this.limiter = limiter; this.owned = owned;
     }
 
     @GetMapping("/test")
@@ -30,17 +31,19 @@ public class ProtectedSeckillController {
 
     @GetMapping("/order/{id}")
     public Order order(@PathVariable long id, HttpServletRequest request) {
-        limiter.query(request.getRemoteAddr()); return async.order(id);
+        limiter.query(request.getRemoteAddr()); return owned.order(id, AuthWebConfiguration.user(request));
     }
 
     @GetMapping("/seckill/result/{requestId}")
     public AsyncReceipt result(@PathVariable String requestId, HttpServletRequest request) {
-        limiter.query(request.getRemoteAddr()); return async.result(requestId);
+        limiter.query(request.getRemoteAddr()); return owned.result(requestId, AuthWebConfiguration.user(request));
     }
 
     @PostMapping("/seckill/{productId}")
-    public ResponseEntity<AsyncReceipt> purchase(@PathVariable long productId, @RequestParam long userId,
+    public ResponseEntity<AsyncReceipt> purchase(@PathVariable long productId, @RequestParam(required=false) Long userId,
             @RequestHeader("Idempotency-Key") String key, HttpServletRequest request) {
+        if (userId != null) throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "USER_ID_MUST_NOT_BE_SUPPLIED");
+        userId = AuthWebConfiguration.user(request);
         if (productId <= 0 || userId <= 0) throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "ID_MUST_BE_POSITIVE");
         ProtectedSeckillService.requestId(userId, key); // Reject invalid keys before allocating Redis keys.
         limiter.purchase(request.getRemoteAddr(), userId);

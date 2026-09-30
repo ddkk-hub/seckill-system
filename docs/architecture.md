@@ -54,3 +54,20 @@ Compose 先等三个依赖健康，再运行 bootstrap 初始化库存，成功�
 Redis 预扣与 MQ 发布之间没有原子事务；预扣后崩溃可能留下 PENDING。MQ 超时和死信不能盲目补库存或换新键下单。数据库提交与 Redis 清理之间也存在失败窗口，数据库流水是订单最终结果依据。Redis AOF everysec、单节点 RabbitMQ/classic 队列与 MySQL 均不提供跨节点高可用。
 
 结果接口和 userId 尚无登录归属验证；限流不能替代认证或边缘流量保护。永久幂等标记还需要设计持久化归档和保留期。工程化阶段没有消除这些业务一致性与身份边界。
+
+## 阶段六身份与授权
+
+```mermaid
+flowchart TD
+    A[注册或登录] --> B[登录限流]
+    B --> C[PBKDF2 密码哈希校验]
+    C --> D[随机 Bearer Token / Redis TTL]
+    E[受保护 HTTP 请求] --> F[Redis 会话校验]
+    F --> G[服务端 userId]
+    G --> H[下单限流 / 幂等 / 原异步流程]
+    G --> I[查询订单或请求]
+    I --> J[MySQL 归属 / 未落库时 Redis 预扣归属]
+    J --> K[本人结果或 404]
+```
+
+阶段六独立 Compose 项目使用 18082，阶段五 18081 保留作教学对照。完整边界与限制见 [阶段六说明](stage6.md)。

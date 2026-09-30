@@ -4,9 +4,13 @@
 
 **技术栈：Java 21 · Spring Boot 3.3.5 · MyBatis · MySQL 8.0.46 · Redis + Lua · RabbitMQ · Docker Compose。**
 
-当前已完成阶段五实现与本机自动化验证，等待项目导师流程中的手工验收。详细结果见 [阶段五说明](docs/stage5.md)、[测试记录](docs/stage5-test-results.txt) 和 [压测报告](docs/stage5-report.md)。
+阶段五已验收并推送（`866bd0f`）。阶段六新增登录认证与订单归属校验，当前本地交付等待验收：[阶段六说明](docs/stage6.md)、[66 项测试](docs/stage6-test-results.txt)、[压测报告](docs/stage6-report.md)。
+
+阶段六独立演示入口为 `http://localhost:18082/api`，使用 `compose.stage6.yaml`。注册/登录后下单只传 Bearer Token 和 Idempotency-Key，不再传 userId。完整启动和 PowerShell 验收命令见阶段六说明；下方原有 18081 快速启动保留为阶段五教学基线。
 
 ## 项目能力
+
+- 阶段六：带盐密码哈希、Redis 短期会话、当前会话退出、登录限流、订单与异步结果本人归属校验。
 
 - Redis Lua 原子库存预扣；商品缓存缺失时停止售卖，不自动从旧数据库库存补满。
 - RabbitMQ 发布确认、消费事务、有限重试与死信；HTTP 202 表示受理，结果查询 SUCCESS 才表示成交。
@@ -91,18 +95,19 @@ $env:SECKILL_REDIS_TEST='true'
 $env:SECKILL_MQ_TEST='true'
 $env:SECKILL_PROTECTION_TEST='true'
 $env:SECKILL_ENGINEERING_TEST='true'
+$env:SECKILL_AUTH_TEST='true'
 .\mvnw.cmd test
 ```
 
-已执行 53 项测试，失败/错误/跳过均为 0。测试用独立商品和队列，但会在指定数据库中建表与写入测试数据，只在开发/测试环境执行。
+已执行 66 项测试，失败/错误/跳过均为 0。测试用独立商品和队列，但会在指定数据库中建表与写入测试数据，只在开发/测试环境执行。
 
 JMeter 5.6.3 放在 target/tools/apache-jmeter-5.6.3，Python 需要 psutil。先完成打包，再运行：
 
 ```powershell
-python perf/run_stage5.py --requests 10000
+python perf/run_stage6.py --requests 10000
 ```
 
-脚本创建独立商品、使用 18090 端口，对比同一 JAR 的 stage4/stage5 配置，记录原始 JTL、QPS、响应时间、429、最终订单、MySQL 状态、CPU 和队列采样。运行前停止独立 Docker 演示容器以减少干扰，结束后可恢复。压测工具位于 target，执行 Maven clean 会删除它，需要重新准备。
+脚本创建独立商品、使用 18090 端口，对比同一阶段六 JAR 的 stage5/stage6 配置（预建登录态，下单身份池相同，排除密码哈希开销），记录原始 JTL、QPS、响应时间、429、最终订单、MySQL 状态、CPU 和队列采样。运行前停止独立 Docker 演示容器以减少干扰，结束后可恢复。压测工具位于 target，执行 Maven clean 会删除它，需要重新准备。
 
 本项目保留短时探索性实测，**不把 HTTP 202 或快速 429 当作最终成交吞吐，也不宣称单轮实验等于生产容量**。
 
@@ -115,6 +120,7 @@ python perf/run_stage5.py --requests 10000
 | 三 | RabbitMQ 异步、确认与消息去重 | [说明](docs/stage3.md) / [报告](docs/stage3-report.md) |
 | 四 | 限流、防刷与请求幂等 | [说明](docs/stage4.md) / [报告](docs/stage4-report.md) |
 | 五 | 日志、异常、Docker 与项目整理 | [说明](docs/stage5.md) / [完整代码](docs/stage5-source.md) / [报告](docs/stage5-report.md) |
+| 六 | 登录认证与订单归属校验 | [说明](docs/stage6.md) / [完整代码](docs/stage6-source.md) / [报告](docs/stage6-report.md) |
 
 [全部实验索引](docs/experiments.md) · [源码 ZIP 与 SHA256 清单](docs/baselines/)
 
@@ -122,6 +128,6 @@ Java 包始终为 com.ddk.seckill，主目录保持 controller / service / entit
 
 ## 尚未解决的问题
 
-userId 没有登录认证，结果接口未校验用户归属；不能直接公网开放。Redis 与 MQ 没有跨系统事务，未决预扣/死信仍需人工对账；Redis AOF everysec 和单节点部署不保证任意故障下零丢失。永久幂等记录需要归档策略，当前多 key Lua 不能直接跨 Redis Cluster 槽使用。
+阶段六已校验登录身份和资源归属；阶段一至五保留无认证教学入口，不能与阶段六一起向业务用户开放。阶段六仍无密码找回、账号封禁、MFA、全会话撤销与 HTTPS 终止配置。Redis 与 MQ 没有跨系统事务，未决预扣/死信仍需人工对账；Redis AOF everysec 和单节点部署不保证任意故障下零丢失。永久幂等记录需要归档策略，当前多 key Lua 不能直接跨 Redis Cluster 槽使用。
 
 Docker 验收覆盖保留数据卷的容器重建，没有覆盖断电恢复、集群高可用或备份恢复。普通 `docker compose down` 保留卷；添加 `-v` 会删除数据，不要用于保留演示记录的重启操作。

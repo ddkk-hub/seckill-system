@@ -1,0 +1,17 @@
+"""Generate a report from the six saved authentication benchmark cases."""
+import json,statistics,sys
+from pathlib import Path
+run=Path(sys.argv[1]);rows=json.loads((run/'metrics.json').read_text());env=json.loads((run/'environment.json').read_text());assert len(rows)==6
+lines=['# 阶段六压测报告','', '阶段：登录认证与订单归属校验。该实验测量已登录后的下单路径，未压测密码登录、注册或订单查询。','',f"测试环境：{env['platform']}，{env['logical_cpus']} 逻辑核、{env['memory_bytes']/1024**3:.1f} GiB；Java 21、Spring Boot 3.3.5、MySQL {env['mysql_version']}、Redis {env['redis_version']}、RabbitMQ {env['rabbitmq_version']}；同机 JMeter 5.6.3。Docker 演示环境压测期间停止。",'', '并发/请求数：每组预热 10 并发 200 请求；正常组 10 并发 500 请求，每线程间隔 100ms；过载组 100 并发 10000 请求，无额外间隔。ramp=1 秒，仅一轮。','', '两组同一最终 JAR、相同 100 个测试身份、同样工程化配置。全局/IP/用户实验配额各 200/s、突发 100。日常 IP 为 50/s、突发 20；日常用户为 2/s、突发 3。临时提高用户配额为了观察认证增量开销，不代表正式配置。','', '登录态预建于 Redis，账号禁用密码登录，实验结束撤销令牌并删除测试账号和临时 CSV。密码哈希不在计时路径中。身份池、循环请求和发送节奏会影响实验结果。','',f"证据目录：`{run.as_posix()}`；JAR SHA256：`{env['jar_sha256']}`。",'', '| 模式/场景 | 请求 | 总 QPS | 受理 QPS | 平均 ms | 最大 ms | 202 成功受理 | 429 拒绝 | 其他失败 | 最终订单 | 剩余库存 | 额外核验等待 s |','|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|']
+for r in rows:
+ c=r['codes'];other=sum(v for k,v in c.items() if k not in ['202','429'])
+ lines.append(f"| {r['mode']}/{r['case']} | {r['requests']} | {r['http_qps']:.2f} | {r['accepted_qps']:.2f} | {r['avg_ms']:.2f} | {r['max_ms']} | {c.get('202',0)} | {c.get('429',0)} | {other} | {r['orders']} | {r['remaining_stock']} | {r['drain_wait_after_jmeter_seconds']:.2f} |")
+lines+=['',f"合计 {sum(r['requests'] for r in rows)} 请求，{sum(r['orders'] for r in rows)} 最终订单，{sum(r['codes'].get('429',0) for r in rows)} 次 429。每组已核验最终订单等于 202 数量，库存 + 订单 = 初始库存，pending=0。",'', '429 属于主动拒绝，在 JMeter 中也是失败响应；总 QPS 包含拒绝，不能当成成交 QPS。202 是受理，消费者最终写入订单后才完成。HTTP 响应时间不等于异步订单端到端时延。','', '## 数据库压力与 CPU','', '| 模式/场景 | MySQL Questions 增量 | 行锁等待次数/ms | MySQL 平均 CPU% | 应用平均 CPU% | 系统平均/峰值 CPU% | Redis 平均 CPU% | 队列观察峰值 |','|---|---:|---:|---:|---:|---:|---:|---:|']
+def avg(x):return statistics.mean(x) if x else 0
+for r in rows:
+ s=r['samples'];a=r['status_after'];b=r['status_before'];system=[p['system_cpu'] for p in s];mysql=[v for p in s for k,v in p.items() if k.startswith('mysql-') and k.endswith('_cpu')]
+ lines.append(f"| {r['mode']}/{r['case']} | {a['Questions']-b['Questions']} | {a['Innodb_row_lock_waits']-b['Innodb_row_lock_waits']}/{a['Innodb_row_lock_time']-b['Innodb_row_lock_time']} | {avg(mysql):.2f} | {avg([p.get('app_cpu',0) for p in s]):.2f} | {avg(system):.2f}/{max(system):.2f} | {r['redis_cpu_seconds']/r['monitor_seconds']/env['logical_cpus']*100:.2f} | {max(p['queue_ready']+p['queue_unacked'] for p in s)} |")
+a=next(r for r in rows if r['mode']=='stage5' and r['case']=='normal');b=next(r for r in rows if r['mode']=='stage6' and r['case']=='normal')
+lines+=['', '进程 CPU 除以逻辑核数，表示整机归一化占用；采样包含 JMeter 启停和消费核验。MySQL 是全局指标，包含采样查询和同机其他活动。RabbitMQ 进程 CPU 未单独采样，管理 API 队列统计有延迟，观察峰值仅为下界。','', '## 相比阶段五', '',f"正常组全部受理：平均响应 {a['avg_ms']:.2f}ms → {b['avg_ms']:.2f}ms，增加 {b['avg_ms']-a['avg_ms']:.2f}ms；HTTP QPS {a['http_qps']:.2f} → {b['http_qps']:.2f}。",'', '每次受保护请求新增 Redis 会话查询。单轮观察到响应时间增加，但不能归因于唯一因素或外推长期容量。过载组最终受理数受闭环发送持续时间与初始突发影响；两组全局配额相同，不以总 QPS 更高或成交数更多判断安全方案优劣。','', '## 功能验证与问题','', '66 项回归测试通过，其中认证集成测试 13 项。覆盖未登录、伪造身份、pending/SUCCESS 越权、结果缓存过期、同键幂等、退出、令牌过期、登录限流与依赖异常拒绝。真实 Docker HTTP 验证见 stage6-docker-check.json。','', '尚未验证登录风暴、长期高并发、TLS 开销、资源查询性能、跨机部署、故障切换或端到端 P99。登录限流不等于账号实名认证；仍需密码管理、自动对账和高可用设计。']
+Path('docs/stage6-report.md').write_text('\n'.join(lines)+'\n',encoding='utf-8')
+print('Stage 6 report generated')

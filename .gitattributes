@@ -24,3 +24,8 @@
 /docs/stage5-source.md -text whitespace=-blank-at-eol,cr-at-eol
 /docs/stage5-test-results.txt -text whitespace=cr-at-eol
 /docs/stage5-docker-check.json -text whitespace=cr-at-eol
+
+/docs/stage6-report.md -text whitespace=cr-at-eol
+/docs/stage6-source.md -text whitespace=-blank-at-eol,cr-at-eol
+/docs/stage6-test-results.txt -text whitespace=cr-at-eol
+/docs/stage6-docker-check.json -text whitespace=cr-at-eol

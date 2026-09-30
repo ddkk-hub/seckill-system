@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.6.3">
+<hashTree>
+<TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Stage 4 protected async">
+<boolProp name="TestPlan.functional_mode">false</boolProp>
+<elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments"><collectionProp name="Arguments.arguments"/></elementProp>
+</TestPlan><hashTree>
+<ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Purchase">
+<stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+<elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController"><boolProp name="LoopController.continue_forever">false</boolProp><stringProp name="LoopController.loops">${__P(loops,10)}</stringProp></elementProp>
+<stringProp name="ThreadGroup.num_threads">${__P(users,10)}</stringProp>
+<stringProp name="ThreadGroup.ramp_time">${__P(ramp,1)}</stringProp>
+<boolProp name="ThreadGroup.scheduler">false</boolProp>
+</ThreadGroup><hashTree>
+<CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Prepared benchmark sessions">
+<stringProp name="filename">${__P(accounts)}</stringProp><stringProp name="fileEncoding">UTF-8</stringProp>
+<stringProp name="variableNames">actorId,token</stringProp><stringProp name="delimiter">,</stringProp>
+<boolProp name="ignoreFirstLine">false</boolProp><boolProp name="quotedData">false</boolProp>
+<boolProp name="recycle">true</boolProp><boolProp name="stopThread">false</boolProp><stringProp name="shareMode">shareMode.all</stringProp>
+</CSVDataSet><hashTree/>
+<HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Purchase one item">
+<elementProp name="HTTPsampler.Arguments" elementType="Arguments"><collectionProp name="Arguments.arguments"><elementProp name="userId" elementType="HTTPArgument"><boolProp name="HTTPArgument.always_encode">false</boolProp><stringProp name="Argument.name">userId</stringProp><stringProp name="Argument.value">${actorId}</stringProp><stringProp name="Argument.metadata">=</stringProp></elementProp></collectionProp></elementProp>
+<stringProp name="HTTPSampler.domain">${__P(host,localhost)}</stringProp>
+<stringProp name="HTTPSampler.port">${__P(port,8081)}</stringProp>
+<stringProp name="HTTPSampler.protocol">http</stringProp>
+<stringProp name="HTTPSampler.path">/api/seckill/${__P(product,900001)}</stringProp>
+<stringProp name="HTTPSampler.method">POST</stringProp>
+<boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+<boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+<stringProp name="HTTPSampler.connect_timeout">3000</stringProp>
+<stringProp name="HTTPSampler.response_timeout">10000</stringProp>
+</HTTPSamplerProxy><hashTree>
+<HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Idempotency key"><collectionProp name="HeaderManager.headers"><elementProp name="Authorization" elementType="Header"><stringProp name="Header.name">Authorization</stringProp><stringProp name="Header.value">Bearer ${token}</stringProp></elementProp><elementProp name="Idempotency-Key" elementType="Header"><stringProp name="Header.name">Idempotency-Key</stringProp><stringProp name="Header.value">${__UUID()}</stringProp></elementProp></collectionProp></HeaderManager><hashTree/>
+<ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Optional pacing"><stringProp name="ConstantTimer.delay">${__P(delay,0)}</stringProp></ConstantTimer><hashTree/>
+</hashTree>
+</hashTree></hashTree></hashTree></jmeterTestPlan>

@@ -1,0 +1,22 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.5)
+
+2026-09-29T16:17:19.276+08:00  INFO 51184 --- [seckill-system] [           main] com.ddk.seckill.SeckillApplication       : Starting SeckillApplication v0.0.1-SNAPSHOT using Java 21.0.12.1 with PID 51184 (C:\seckill-system\target\seckill-system-stage6.jar started by Asus in C:\seckill-system)
+2026-09-29T16:17:19.282+08:00  INFO 51184 --- [seckill-system] [           main] com.ddk.seckill.SeckillApplication       : The following 1 profile is active: "stage2"
+2026-09-29T16:17:21.392+08:00  INFO 51184 --- [seckill-system] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-09-29T16:17:21.398+08:00  INFO 51184 --- [seckill-system] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-09-29T16:17:21.440+08:00  INFO 51184 --- [seckill-system] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 19 ms. Found 0 Redis repository interfaces.
+2026-09-29T16:17:25.914+08:00  INFO 51184 --- [seckill-system] [           main] com.ddk.seckill.SeckillApplication       : Started SeckillApplication in 7.61 seconds (process running for 8.634)
+2026-09-29T16:17:26.021+08:00  INFO 51184 --- [seckill-system] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-09-29T16:17:26.914+08:00  INFO 51184 --- [seckill-system] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@75b363c3
+2026-09-29T16:17:26.938+08:00  INFO 51184 --- [seckill-system] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+Inventory ready: product=358, remaining=500
+2026-09-29T16:17:28.460+08:00  INFO 51184 --- [seckill-system] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-09-29T16:17:28.494+08:00  INFO 51184 --- [seckill-system] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
